@@ -11,8 +11,11 @@
       <a href="/bands">Bands</a>
       <div id="auth">
         {{#if user}}
-          <div id="name">{{user.name}}</div>
           <a id="signout" href="/users/signout">Sign Out</a>
+          {{#if user.img}}
+            <img id="name-img" src="{{user.img}}">
+          {{/if}}
+          <div id="name">{{user.name}}</div>
         {{else}}
           <div id="signup">Sign Up</div>
           <div id="signin">Sign In</div>

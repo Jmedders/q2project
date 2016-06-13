@@ -1,28 +1,34 @@
 var express = require('express'), router = express.Router();
 
+router.use((req, res, next) => {
+  var user = getUserData(0);
+  user.bands = user.bands.map(getBandData);
+  res.locals.user = user;
+  next();
+});
+
 router.get('/', (req, res) => {
-  // get a list of bands
-  // if user, filter user's bands to separate object
-  var bands = [];
-  console.log(getBandData(0));
-  if(/*user is signed in + has bands*/true) res.locals.user = {name: "Paul McCartney", user_id: 0, bands: [getBandData(0)]};
-  res.render('bands', {bands: bands});
+  res.render('bands', {});
 });
 
 router.get('/:band_id', (req, res) => {
-  var data = getBandData(req.params.band_id); // Get data from id.
-  if(/*user is admin of band*/true) data.isAdmin = true;
-  res.render('band', {});
+  var band = getBandData(req.params.band_id),
+    isAdmin = !!band.members.find(e => e.user_id === res.locals.user.user_id).isAdmin;
+  res.render('band', {band: band, isAdmin: isAdmin});
 });
 
 module.exports = router;
 
-function getBandData(id){ // Sure would be nice to just store this as json.
+function getUserData(id){
+  return [{name: "Paul McCartney", user_id: 0, bands: [0]}][id];
+}
+
+function getBandData(id){
   return [{
     band_id: 0,
     name: "The Beatles",
     members: [
-      {name: "Paul McCartney", user_id: 0},
+      {name: "Paul McCartney", isAdmin: true, user_id: 0},
       {name: "John Lennon", user_id: 1},
       {name: "George Harrison", user_id: 2},
       {name: "Ringo Starr", user_id: 3}
