@@ -45,7 +45,6 @@ nav a {
   width: 200px;
   height: 40px;
   background: rgb(100,10,10);
-  overflow-x: hidden;
 }
 
 #auth_inputs {
