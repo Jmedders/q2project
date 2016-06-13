@@ -1,0 +1,164 @@
+/* Reset */
+html, body {height: 100%; width: 100%; padding: 0; margin: 0; border: 0;}
+a {text-decoration: none;}
+::-webkit-scrollbar {display: none;}
+
+/* Font Import */
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Droid Sans'), local('DroidSans'), url(https://fonts.gstatic.com/s/droidsans/v6/s-BiyweUPV0v-yRb-cjciPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/* Operations */
+.hide {opacity: 0; height: 0; width: 0 !important; padding: 0px !important; font-size: 0 !important; visibility: hidden;}
+
+/* Base Styles */
+body {
+  background-image: url("http://arounddeglobe.com/wp-content/uploads/2016/04/Kiyomizu-dera.jpg");
+  background-size: cover;
+  overflow: hidden;
+}
+
+nav {
+  background: rgb(100, 10, 10);
+  border-bottom: 1px solid rgb(20,20,20);
+  color: white;
+  font: 16px "Droid Sans";
+  height: 40px;
+  padding: 0px 15px;
+  position: relative;
+}
+
+nav a {
+  color: white;
+  display: inline-block;
+  padding: 10px;
+}
+
+#auth {
+  font-size: 0;
+  position: absolute;
+  top: 0; right: 0;
+  width: 200px;
+  height: 40px;
+  background: rgb(100,10,10);
+}
+
+#auth_inputs {
+  transition: .2s all;
+  overflow: hidden;
+}
+button {
+  border: none;
+  color: white;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 200px;
+}
+input {
+  border: none;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+}
+
+#signup, #signin, #close, #signout, #name, #facebook, #google {text-align: center;}
+#signup, #signin, #close, #signout, #name, #facebook, #google {cursor: pointer;}
+#signup, #signin, #close, #signout, #name, #facebook, #google, input, button {font-size: 16px;}
+#signup, #signin, #close, #signout {transition: .2s all;}
+#signup, #signin, #close, #facebook, #google {
+  box-sizing: border-box;
+  padding: 10px;
+  display: inline-block;
+  width: 100px;
+}
+.expand, #signout, #close, button {background: rgb(20,20,20) !important;}
+#signout {float: right;box-sizing: border-box; padding: 10px 30px; height: 40px;}
+#name {position: fixed; top: 0; right: 120px; box-sizing: border-box; padding: 10px 30px; height: 40px;}
+#google {background: white; color: black;}
+#facebook {background: rgb(50, 86, 210);}
+
+/*el("#close").classList.toggle("hide");
+el("#auth_inputs").classList.toggle("hide");
+el("#" + action).classList.toggle("expand");
+el("#" + other).classList.toggle("hide");*/
+/*<nav>
+  <div id="auth">
+    {{#if user}}
+      <a id="signout" href="/users/signout">Sign Out</a>
+    {{else}}
+      <div id="signup">Sign Up</div>
+      <div id="signin">Sign In</div>
+      <div id="close" class="hide">Close</div>
+    {{/if}}
+    <form id="auth_inputs" method="post" action="/users/signup" class="hide">
+      <input type="text" name="username" placeholder="Enter Username">
+      <input type="password" name="password" placeholder="Enter Password">
+      <div id="facebook">Facebook</div>
+      <div id="google">Google</div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</nav>*/
+
+#index-content {
+  background: rgb(20,20,20);
+  box-sizing: border-box;
+  color: white;
+  font-family: "Droid Sans";
+  left: 25%;
+  padding: 20px;
+  position: absolute;
+  text-align: center;
+  top: 25%;
+  width: 50%;
+}
+
+#bands-content {
+  margin: 0 auto;
+  height: calc(100% - 40px);
+  overflow-y: scroll;
+  width: 80%;
+}
+
+.band {
+  background: rgba(245,245,245,.6);
+  box-shadow: 0px 0px 1px 1px rgba(0,0,0,.5);
+  margin: 20px 0px;
+  font-size: 0;
+  padding-bottom: 10px;
+}
+
+.band-name {
+  background: rgba(20,20,20,.7);
+  color: white;
+  font: 22px "Droid Sans";
+  box-sizing: border-box;
+  padding: 10px 20px;
+}
+
+.band-members, .band-gigs, .band-setlists {
+  vertical-align: text-top;
+  display: inline-block;
+  width: calc(100% / 3);
+  font: 18px "Droid Sans";
+}
+
+.title {
+  padding: 5px 10px;
+  color: rgb(20,20,20);
+  font-weight: 700;
+  font-size: 20px;
+  width: 100%;
+}
+
+.band-member {
+  padding: 5px 20px;
+}
+
+.setlist {
+  margin: 10px 0px;
+}
