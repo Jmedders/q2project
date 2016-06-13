@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Kyoto.fm - Keep your shit together</title>
+    <link rel='stylesheet' href='/style.css'>
+    <script type="text/javascript" src="/client.js" defer></script>
   </head>
   <body>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/bands">Bands</a>
+      <div id="auth">
+        {{#if user}}
+          <div id="name">{{user.name}}</div>
+          <a id="signout" href="/users/signout">Sign Out</a>
+        {{else}}
+          <div id="signup">Sign Up</div>
+          <div id="signin">Sign In</div>
+          <div id="close" class="hide">Close</div>
+        {{/if}}
+        <form id="auth_inputs" method="post" action="/users/signup" class="hide">
+          <input type="text" name="username" placeholder="Enter Username" required>
+          <input type="password" name="password" placeholder="Enter Password" required>
+          <div id="facebook">Facebook</div>
+          <div id="google">Google</div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </nav>
+
     {{{body}}}
   </body>
 </html>

@@ -1,0 +1,37 @@
+<div id="bands-content">
+  {{#user.bands}}
+    <div class="band">
+      <div class="band-name">{{name}}</div>
+      <div class="band-members">
+        <div class="title">Members</div>
+        {{#members}}
+          <div class="band-member">{{name}}</div>
+        {{/members}}
+      </div>
+      <div class="band-gigs">
+        <div class="title">Gigs</div>
+        {{#gigs}}
+          <div class="band-gig">
+            <div class="gig-date">{{date}}</div>
+            <div class="gig-venue">{{venue}}</div>
+            <div class="gig-loadInTime">Load in time: {{loadInTime}}</div>
+            <div class="gig-loadInTime">Start time: {{startTime}}</div>
+            <div class="gig-loadInTime">End time: {{endTime}}</div>
+            <div class="gig-setlist">Setlist: {{setlist.name}}</div>
+          </div>
+        {{/gigs}}
+      </div>
+      <div class="band-setlists">
+        <div class="title">Setlists</div>
+        {{#setlists}}
+          <div class="setlist">
+            <div class="setlist-title">{{title}}</div>
+            {{#songs}}
+              <div class="setlist-song">{{title}}</div>
+            {{/songs}}
+          </div>
+        {{/setlists}}
+      </div>
+    </div>
+  {{/user.bands}}
+</div>
