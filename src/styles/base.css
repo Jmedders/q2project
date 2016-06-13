@@ -1,0 +1,14 @@
+/* Reset */
+html, body {height: 100%; width: 100%; padding: 0; margin: 0; border: 0;}
+a {text-decoration: none;}
+::-webkit-scrollbar {display: none;}
+
+/* Operations */
+.hide {opacity: 0; height: 0; width: 0 !important; padding: 0px !important; font-size: 0 !important; visibility: hidden;}
+
+/* Base Styles */
+body {
+  background-image: url("http://arounddeglobe.com/wp-content/uploads/2016/04/Kiyomizu-dera.jpg");
+  background-size: cover;
+  overflow: hidden;
+}
