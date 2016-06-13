@@ -1,12 +1,25 @@
 var express = require('express'), router = express.Router();
+var knex = require('../db/knex');
 
 router.get('/', (req, res) => {
   // get a list of bands
+    // clear session / cookies
+    knex('users').where('facebook_id', req.session.passport.user.id).then(function(data){
+      // console.log(data[0]['id']);
+      req.session.user_name = data[0]['user_name'];
+      req.session.user_id = data[0]['id'];
+      console.log(req.session.user_name);
+        var bands = [];
+      if(/*user is signed in + has bands*/true) res.locals.user = {name: req.session.user_name , user_id: req.session.user_id, bands: [getBandData(0)]};
+      console.log('we log ' + req.session.user_id);
+      res.render('bands', {bands: bands});
+    })
+    // console.log(req.session.passport.user.id);
   // if user, filter user's bands to separate object
-  var bands = [];
-  console.log(getBandData(0));
-  if(/*user is signed in + has bands*/true) res.locals.user = {name: "Paul McCartney", user_id: 0, bands: [getBandData(0)]};
-  res.render('bands', {bands: bands});
+
+  // console.log(getBandData(0));
+
+
 });
 
 router.get('/:band_id', (req, res) => {
