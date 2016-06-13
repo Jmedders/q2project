@@ -1,0 +1,12 @@
+#index-content {
+  background: rgb(20,20,20);
+  box-sizing: border-box;
+  color: white;
+  font-family: "Droid Sans";
+  left: 25%;
+  padding: 20px;
+  position: absolute;
+  text-align: center;
+  top: 25%;
+  width: 50%;
+}
