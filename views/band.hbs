@@ -1,0 +1,57 @@
+<div id="band-content">
+  <aside></aside>
+
+  <div class="name">{{band.name}}</div>
+
+  <header>
+    <div class="action">Gigs</div>
+    <div class="action">Setlists</div>
+    <div class="action">Members</div>
+  </header>
+
+  <div class="band">
+
+    <div class="members">
+      {{#band.members}}
+        <div class="member">
+          <div class="member-name">{{name}}</div>
+        </div>
+      {{/band.members}}
+    </div>
+
+    <div class="gigs">
+      {{#band.gigs}}
+        <div class="gig">
+          <div class="gig-date">{{date}}</div>
+          <div class="gig-venue">{{venue}}</div>
+          <div class="gig-loadInTime">Load in time: {{loadInTime}}</div>
+          <div class="gig-loadInTime">Start time: {{startTime}}</div>
+          <div class="gig-loadInTime">End time: {{endTime}}</div>
+          <div class="gig-setlist">Setlist: {{setlist.name}}</div>
+        </div>
+      {{/band.gigs}}
+    </div>
+
+    <div class="setlists">
+      {{#band.setlists}}
+        <div class="setlist">
+          <div class="setlist-title">{{title}}</div>
+          {{#songs}}
+            <div class="setlist-song">{{title}}</div>
+          {{/songs}}
+        </div>
+      {{/band.setlists}}
+    </div>
+
+    <div class="songs">
+      {{#band.songs}}
+        <div class="song">{{title}}</div>
+      {{/band.songs}}
+    </div>
+  </div>
+  <footer>
+    <div id="edit">Edit</div>
+    <div id="submit">Submit</div>
+    <div id="cancel">Cancel</div>
+  </footer>
+</div>
