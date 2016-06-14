@@ -80,13 +80,14 @@ app.use((req, res, next) => {
 
     if (req.session.passport) { // If using Facebook OAuth
       res.locals.user = {
-        user_id: req.session.passport.user.id
+        user_id: req.session.passport.user.id,
+        name: req.session.passport.user.displayName
       };
-      console.log(res.locals.user);
     }
     else if (req.session.user_id) { // If using regular login
         res.locals.user = {
-            user_id: req.session.user_id
+            user_id: req.session.user_id,
+            name: req.session.display_name
         };
     } else { // If logged out
         res.locals.user = null;

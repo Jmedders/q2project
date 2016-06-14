@@ -39,8 +39,7 @@ router.post("/signin", (req, res, next) => {
     }
     else if(bcrypt.compareSync(req.body.password, data.password)){ // Successful password validation
       req.session.user_id = data.id;
-      res.locals.user = {name: 'meddersssss'};
-      console.log('res.locals:', res.locals);
+      req.session.display_name = data.display_name;
       res.redirect('/bands')
     }
     else{

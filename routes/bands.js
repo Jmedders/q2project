@@ -4,11 +4,7 @@ var express = require('express'),
   getBandData = require("../temp.js").getBandData; // This is just for getting the mock data.
 
 router.get('/', (req, res) => {
-    // console.log('req.session:', req.session);
-    // res.locals.user = {
-    //   user_id: req.session.user_id
-    // };
-    // console.log('res.locals.user:',res.locals.user);
+
     res.render('bands');
 });
 
