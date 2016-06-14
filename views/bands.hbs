@@ -2,16 +2,17 @@
   {{#user.bands}}
     <div class="band">
       <div class="band-name">{{name}}</div>
-      <div class="band-members">
-        <div class="title">Members</div>
+      <div class="action">Members</div>
+      <div class="action">Gigs</div>
+      <div class="action">Setlists</div>
+      <div class="members">
         {{#members}}
-          <div class="band-member">{{name}}</div>
+          <div class="member">{{name}}</div>
         {{/members}}
       </div>
-      <div class="band-gigs">
-        <div class="title">Gigs</div>
+      <div class="gigs">
         {{#gigs}}
-          <div class="band-gig">
+          <div class="gig">
             <div class="gig-date">{{date}}</div>
             <div class="gig-venue">{{venue}}</div>
             <div class="gig-loadInTime">Load in time: {{loadInTime}}</div>
@@ -21,8 +22,7 @@
           </div>
         {{/gigs}}
       </div>
-      <div class="band-setlists">
-        <div class="title">Setlists</div>
+      <div class="setlists">
         {{#setlists}}
           <div class="setlist">
             <div class="setlist-title">{{title}}</div>

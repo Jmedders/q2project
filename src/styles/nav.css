@@ -1,0 +1,58 @@
+nav {
+  background: rgb(100, 10, 10);
+  border-bottom: 1px solid rgb(20,20,20);
+  color: white;
+  font: 16px "Droid Sans";
+  height: 40px;
+  padding: 0px 15px;
+  position: relative;
+}
+
+nav a {
+  color: white;
+  display: inline-block;
+  padding: 10px;
+}
+
+#auth {
+  font-size: 0;
+  position: absolute;
+  top: 0; right: 0;
+  width: 200px;
+  height: 40px;
+  background: rgb(100,10,10);
+}
+
+#auth_inputs {
+  transition: .2s all;
+  overflow: hidden;
+}
+button {
+  border: none;
+  color: white;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 200px;
+}
+input {
+  border: none;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+}
+
+#signup, #signin, #close, #signout, #name, #facebook, #google {text-align: center;}
+#signup, #signin, #close, #signout, #name, #facebook, #google, button {cursor: pointer;}
+#signup, #signin, #close, #signout, #name, #facebook, #google, input, button {font-size: 16px;}
+#signup, #signin, #close, #signout {transition: .2s all;}
+#signup, #signin, #close, #facebook, #google {
+  box-sizing: border-box;
+  padding: 10px;
+  display: inline-block;
+  width: 100px;
+}
+.expand, #signout, #close, button {background: rgb(20,20,20) !important;}
+#signout {float: right;box-sizing: border-box; padding: 10px 30px; height: 40px;}
+#name {position: fixed; top: 0; right: 120px; box-sizing: border-box; padding: 10px 30px; height: 40px;}
+#google {background: white; color: black;}
+#facebook {background: rgb(50, 86, 210);}
