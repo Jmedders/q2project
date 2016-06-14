@@ -15,7 +15,8 @@ router.post("/signup", (req, res, next) => {
     else{
     knex('users').insert({
       user_name: req.body.username.toLowerCase(),
-      password: password
+      password: password,
+      display_name: req.body.username.toLowerCase()
     }).returning('id').then(function(id){
       res.redirect('/');
     }).catch(function(err){
@@ -36,8 +37,10 @@ router.post("/signin", (req, res, next) => {
       res.locals.error = "user does not exist!";
       res.redirect('/')
     }
-    else if(bcrypt.compareSync(req.body.password, data.password)){
+    else if(bcrypt.compareSync(req.body.password, data.password)){ // Successful password validation
       req.session.user_id = data.id;
+      res.locals.user = {name: 'meddersssss'};
+      console.log('res.locals:', res.locals);
       res.redirect('/bands')
     }
     else{
