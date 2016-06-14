@@ -12,15 +12,16 @@
   <div class="band">
 
     <div class="members">
-      {{#band.members}}
+      {{log members}}
+      {{#members}}
         <div class="member">
           <div class="member-name">{{name}}</div>
         </div>
-      {{/band.members}}
+      {{/members}}
     </div>
 
     <div class="gigs">
-      {{#band.gigs}}
+      {{#gigs}}
         <div class="gig">
           <div class="gig-date">{{date}}</div>
           <div class="gig-venue">{{venue}}</div>
@@ -29,24 +30,24 @@
           <div class="gig-loadInTime">End time: {{endTime}}</div>
           <div class="gig-setlist">Setlist: {{setlist.name}}</div>
         </div>
-      {{/band.gigs}}
+      {{/gigs}}
     </div>
 
     <div class="setlists">
-      {{#band.setlists}}
+      {{#setlists}}
         <div class="setlist">
           <div class="setlist-title">{{title}}</div>
           {{#songs}}
             <div class="setlist-song">{{title}}</div>
           {{/songs}}
         </div>
-      {{/band.setlists}}
+      {{/setlists}}
     </div>
 
     <div class="songs">
-      {{#band.songs}}
+      {{#songs}}
         <div class="song">{{title}}</div>
-      {{/band.songs}}
+      {{/songs}}
     </div>
   </div>
   <footer>
