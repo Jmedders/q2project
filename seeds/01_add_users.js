@@ -13,6 +13,10 @@ exports.seed = function(knex, Promise) {
         knex('users').insert({
             user_name: 'sean',
             password: 'password'
+        }),
+        knex('users').insert({
+          user_name: 'Thom Yorke',
+          password: 'hailtothethief'
         })
     );
 };

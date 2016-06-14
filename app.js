@@ -8,9 +8,9 @@ var express = require('express'),
   passport = require('passport'),
   FacebookStrategy = require('passport-facebook').Strategy,
   knex = require('./db/knex'),
-  cookieSession = require('cookie-session');
-  require('dotenv').config();
+  cookieSession = require('cookie-session'),
   session = require('express-session');
+  require('dotenv').config();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -29,37 +29,6 @@ app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/bands', bands = require('./routes/bands'));
 
-// app.use(cookieSession({
-//   name: 'session',
-//   keys: [
-//     process.env.SESSION_KEY1,
-//     process.env.SESSION_KEY2,
-//     process.env.SESSION_KEY3,
-//     process.env.SESSION_KEY4,
-//     process.env.SESSION_KEY5
-//   ]
-// }))
-
-
-// app.use(function(req, res, next){
-//   req.session.id = (Array.isArray(req.session.id)) ? req.session.id[0] : req.session.id
-//   if(req.session.id){
-//     console.log('hi');
-//     knex('users')
-//     .where({id: req.session.id})
-//     .first()
-//     .then(function(data){
-//       res.locals.user = data;
-//       next();
-//     })
-//   }
-//   else {
-//     res.locals.user = {
-//       username: 'Guest'
-//     }
-//     next();
-//   }
-// })
 
 passport.serializeUser(function(user, cb) {
   cb(null, user);
