@@ -15,7 +15,7 @@ app.set('view engine', 'hbs'); // Sets view engine to handlebars.
 app.use(bodyParser.json()); // Parses JSON.
 app.use(bodyParser.urlencoded({extended: false})); // Parses UTF8.
 app.use(cookieParser()); // Parses cookies.
-app.use(express.static(__dirname + "/public"))); // Sets static file directory.
+app.use(express.static(__dirname + "/public")); // Sets static file directory.
 
 // Auth
 var FBAPI = { // Should probably put some of this stuff in the .env
