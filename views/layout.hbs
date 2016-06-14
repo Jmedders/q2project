@@ -12,9 +12,6 @@
       <div id="auth">
         {{#if user}}
           <a id="signout" href="/users/signout">Sign Out</a>
-          {{#if user.img}}
-            <img id="name-img" src="{{user.img}}">
-          {{/if}}
           <div id="name">{{user.name}}</div>
         {{else}}
           <div id="signup">Sign Up</div>
