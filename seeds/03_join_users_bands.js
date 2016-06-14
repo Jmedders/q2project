@@ -1,26 +1,71 @@
 exports.seed = function(knex, Promise) {
     return Promise.join(
-        knex('users_bands').del(),
 
-        knex('users_bands').insert({
-            users_id: 1,
-            bands_id: 1
+        knex('users')
+        .where('display_name', 'Josh Newsom')
+        .orWhere('display_name', 'Sean Murray')
+        .orWhere('display_name', 'Jeff Medders')
+        .then(function(result) {
+            return knex('users_bands')
+                .insert([{
+                    users_id: result[0].id,
+                    bands_id: 3
+                }, {
+                    users_id: result[1].id,
+                    bands_id: 3
+                }, {
+                    users_id: result[2].id,
+                    bands_id: 3
+                }]);
         }),
-        knex('users_bands').insert({
-            users_id: 1,
-            bands_id: 2
+
+        knex('users')
+        .where('display_name', 'Thom Yorke')
+        .orWhere('display_name', 'Jonny Greenwood')
+        .orWhere('display_name', 'Colin Greenwood')
+        .orWhere('display_name', 'Philip Selway')
+        .orWhere('display_name', 'Ed O\'Brien')
+        .then(function(result) {
+            return knex('users_bands')
+                .insert([{
+                    users_id: result[0].id,
+                    bands_id: 2
+                }, {
+                    users_id: result[1].id,
+                    bands_id: 2
+                }, {
+                    users_id: result[2].id,
+                    bands_id: 2
+                }, {
+                    users_id: result[3].id,
+                    bands_id: 2
+                }, {
+                    users_id: result[4].id,
+                    bands_id: 2
+                }]);
         }),
-        knex('users_bands').insert({
-            users_id: 1,
-            bands_id: 3
-        }),
-        knex('users_bands').insert({
-            users_id: 2,
-            bands_id: 1
-        }),
-        knex('users_bands').insert({
-            users_id: 3,
-            bands_id: 1
+
+        knex('users')
+        .where('display_name', 'Paul McCartney')
+        .orWhere('display_name', 'John Lennon')
+        .orWhere('display_name', 'Ringo Starr')
+        .orWhere('display_name', 'George Harrison')
+        .then(function(result) {
+            return knex('users_bands')
+                .insert([{
+                    users_id: result[0].id,
+                    bands_id: 1
+                }, {
+                    users_id: result[1].id,
+                    bands_id: 1
+                }, {
+                    users_id: result[2].id,
+                    bands_id: 1
+                }, {
+                    users_id: result[3].id,
+                    bands_id: 1
+                }]);
         })
+
     );
 };

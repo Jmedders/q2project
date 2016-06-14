@@ -1,22 +1,74 @@
+var bcrypt = require('bcrypt');
+
 exports.seed = function(knex, Promise) {
     return Promise.join(
+        // Delete all current users
+        knex('users_bands').del(),
+        knex('bands').del(),
         knex('users').del(),
 
+        // Insert new users
         knex('users').insert({
-            user_name: 'josh',
-            password: 'password'
+            user_name: 'joshN4264',
+            password: bcrypt.hashSync('my_stupid_password', 8),
+            display_name: 'Josh Newsom'
         }),
         knex('users').insert({
-            user_name: 'jeff',
-            password: 'password'
+            user_name: 'meddersjeff',
+            password: bcrypt.hashSync('better_password_than_josh', 8),
+            display_name: 'Jeff Medders'
         }),
         knex('users').insert({
-            user_name: 'sean',
-            password: 'password'
+            user_name: 'onelinewonder',
+            password: bcrypt.hashSync('drowssap', 8),
+            display_name: 'Sean Murray'
         }),
         knex('users').insert({
-          user_name: 'Thom Yorke',
-          password: 'hailtothethief'
+            user_name: 'jgbeepboop',
+            password: bcrypt.hashSync('iliketotwiddleknobs', 8),
+            display_name: 'Jonny Greenwood'
+        }),
+        knex('users').insert({
+            user_name: 'hailtothethief',
+            password: bcrypt.hashSync('amoonshapedpool2016', 8),
+            display_name: 'Thom Yorke'
+        }),
+        knex('users').insert({
+            user_name: 'c_greenwood',
+            password: bcrypt.hashSync('mybrotherismorefamousthaniam', 8),
+            display_name: 'Colin Greenwood'
+        }),
+        knex('users').insert({
+            user_name: 'p_selway_1967',
+            password: bcrypt.hashSync('iplaydrumsyay', 8),
+            display_name: 'Philip Selway'
+        }),
+        knex('users').insert({
+            user_name: 'ed_obrien',
+            password: bcrypt.hashSync('allthefx', 8),
+            display_name: 'Ed O\'Brien'
+        }),
+        knex('users').insert({
+            user_name: 'sirpaul',
+            password: bcrypt.hashSync('iplaythe84$$', 8),
+            display_name: 'Paul McCartney'
+        }),
+        knex('users').insert({
+            user_name: 'rstarr1940',
+            password: bcrypt.hashSync('yellow_octopus_submarine_garden', 8),
+            display_name: 'Ringo Starr'
+        }),
+        knex('users').insert({
+            user_name: 'george_motherfucking_harrison',
+            password: bcrypt.hashSync('whileMyGuitarGentlyWeeps', 8),
+            display_name: 'George Harrison'
+        }),
+        knex('users').insert({
+            user_name: 'some_guy',
+            password: bcrypt.hashSync('yokoono_onookoy', 8),
+            display_name: 'John Lennon'
         })
+
+
     );
 };
