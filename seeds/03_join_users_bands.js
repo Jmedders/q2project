@@ -65,6 +65,32 @@ exports.seed = function(knex, Promise) {
                     users_id: result[3].id,
                     bands_id: 1
                 }]);
+        }),
+
+        knex('users')
+        .where('display_name', 'Eddie Vedder')
+        .orWhere('display_name', 'Stone Gossard')
+        .orWhere('display_name', 'Matt Cameron')
+        .orWhere('display_name', 'Jeff Ament')
+        .orWhere('display_name', 'Mike McCready')
+        .then(function(result) {
+            return knex('users_bands')
+                .insert([{
+                    users_id: result[0].id,
+                    bands_id: 4
+                }, {
+                    users_id: result[1].id,
+                    bands_id: 4
+                }, {
+                    users_id: result[2].id,
+                    bands_id: 4
+                }, {
+                    users_id: result[3].id,
+                    bands_id: 4
+                }, {
+                    users_id: result[4].id,
+                    bands_id: 4
+                }])
         })
 
     );

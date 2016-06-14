@@ -12,8 +12,11 @@ exports.up = function(knex, Promise) {
         .createTable('songs', function(table) {
             table.increments();
             table.string('song_name');
-            table.string('song_key');
             table.integer('band_id').references('bands.id');
+            table.string('song_key');
+            table.string('time_signature');
+            table.string('feel');
+            table.integer('tempo');
         })
         .createTable('setlists', function(table) {
             table.increments();

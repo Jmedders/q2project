@@ -9,6 +9,9 @@ exports.seed = function(knex, Promise) {
         }),
         knex('bands').insert({
             band_name: 'The Querymen'
+        }),
+        knex('bands').insert({
+            band_name: 'Pearl Jam'
         })
 
     );
