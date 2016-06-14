@@ -1,50 +1,7 @@
-#bands-content {
-  margin: 0 auto;
-  height: calc(100% - 40px);
-  overflow-y: scroll;
-  width: 100%;
-  max-width: 900px;
-}
-
-.band {
-  background: rgba(245,245,245,.6);
-  box-shadow: 0px 0px 1px 1px rgba(0,0,0,.5);
-  margin: 20px 0px;
-  font-size: 0;
-  padding-bottom: 10px;
-}
-
 .band-name {
-  background: rgba(20,20,20,.7);
+  display: block;
   color: white;
-  font: 22px "Droid Sans";
-  box-sizing: border-box;
-  padding: 10px 20px;
-}
-
-.members, .gigs, .setlists {
-  font: 18px "Droid Sans";
-  height: 0px;
-  transition: .2s all;
-  vertical-align: text-top;
-}
-
-.unhide {
-  height: auto;
-}
-
-.title {
-  padding: 5px 10px;
-  color: rgb(20,20,20);
-  font-weight: 700;
-  font-size: 20px;
-  width: 100%;
-}
-
-.member {
-  padding: 5px 20px;
-}
-
-.setlist {
-  margin: 10px 0px;
+  background: rgb(20,20,20);
+  padding: 20px;
+  font: 700 40px "Droid Sans";
 }

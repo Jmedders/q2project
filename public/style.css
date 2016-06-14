@@ -1,61 +1,69 @@
-#bands-content {
-  margin: 0 auto;
-  height: calc(100% - 40px);
-  overflow-y: scroll;
+#band-content {height: calc(100% - 80px); width: 100%; font: 0px "Droid Sans"; box-shadow: 0px 0px 1px 1px rgba(0,0,0,.5);}
+.band, .name {vertical-align: text-top;}
+header, footer {
   width: 100%;
   max-width: 900px;
+  margin: 0 auto;
+  height: 40px;
+  box-sizing: border-box;
+  background: rgb(100,10,10);
 }
-
+header {border-bottom: 1px solid black;}
+.action {
+  cursor: pointer;
+  font-size: 16px;
+  display: inline-block;
+  text-align: center;
+  color: white;
+  box-sizing: border-box;
+  padding: 10px;
+  width: calc(100% / 3);
+}
 .band {
-  background: rgba(245,245,245,.6);
-  box-shadow: 0px 0px 1px 1px rgba(0,0,0,.5);
-  margin: 20px 0px;
-  font-size: 0;
-  padding-bottom: 10px;
+  height: calc(100% - 140px);
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
 }
+.name {
+  box-sizing: border-box;
+  height: 100px;
+  vertical-align: text-top;
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  padding: 20px 0px 0px 0px;
+  font-weight: 700;
+  text-shadow: 1px 1px black, -1px 1px black, -1px -1px black, 1px -1px black;
+}
+footer {border-top: 1px solid black;}
+#edit, #submit, #cancel {
+  cursor: pointer;
+  transition: .2s all;
+  font-size: 16px;
+  display: inline-block;
+  text-align: center;
+  color: white;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#edit {width: 100%; padding: 10px;}
+#edit.hide {width: 0%; padding: 0px;}
+#submit, #cancel {width: 0; padding: 0px;}
+#submit.show, #cancel.show {width: 50%; padding: 10px;}
 
 .band-name {
-  background: rgba(20,20,20,.7);
+  display: block;
   color: white;
-  font: 22px "Droid Sans";
-  box-sizing: border-box;
-  padding: 10px 20px;
-}
-
-.members, .gigs, .setlists {
-  font: 18px "Droid Sans";
-  height: 0px;
-  transition: .2s all;
-  vertical-align: text-top;
-}
-
-.unhide {
-  height: auto;
-}
-
-.title {
-  padding: 5px 10px;
-  color: rgb(20,20,20);
-  font-weight: 700;
-  font-size: 20px;
-  width: 100%;
-}
-
-.member {
-  padding: 5px 20px;
-}
-
-.setlist {
-  margin: 10px 0px;
+  background: rgb(20,20,20);
+  padding: 20px;
+  font: 700 40px "Droid Sans";
 }
 
 /* Reset */
 html, body {height: 100%; width: 100%; padding: 0; margin: 0; border: 0;}
 a {text-decoration: none;}
 ::-webkit-scrollbar {display: none;}
-
-/* Operations */
-.hide {opacity: 0; height: 0; width: 0 !important; padding: 0px !important; font-size: 0 !important; visibility: hidden;}
 
 /* Base Styles */
 body {
@@ -73,7 +81,8 @@ body {
 }
 
 #index-content {
-  background: rgb(20,20,20);
+  background: rgba(20,20,20,.9);
+  box-shadow: 0px 0px 1px 1px rgba(0,0,0,.5);
   box-sizing: border-box;
   color: white;
   font-family: "Droid Sans";
@@ -85,61 +94,38 @@ body {
   width: 50%;
 }
 
-nav {
-  background: rgb(100, 10, 10);
-  border-bottom: 1px solid rgb(20,20,20);
-  color: white;
-  font: 16px "Droid Sans";
-  height: 40px;
-  padding: 0px 15px;
-  position: relative;
-}
+/*Pretend Classes*/
+nav, #auth, #signout, #name {height: 40px;}
+#auth, button {cursor: pointer;}
+input, button {border: none;}
+#auth_inputs, input, button {width: 200px;}
+nav, nav a, button {color: white;}
+#auth, button {background: rgb(20,20,20);}
+#auth, #auth-inputs, #signout, #name {float: right;}
+#facebook, #google {width: 50%;}
+#signup, #signin, #close {width: 100px;}
+nav a, #signup, #signin, #close, #signout, #name, #facebook, #google, input, button {font: 16px "Droid Sans";}
+#auth_inputs, #signup, #signin, #close {transition: .2s all;}
+#signup, #signin, #signout, #close, #facebook, #google, input, button, #name {box-sizing: border-box;}
+nav a, #signup, #signin, #close, #facebook, #google, input, button {padding: 10px;}
+nav a, #signup, #signin, #close, #facebook, #google {display: inline-block;}
+#signin, #signup, #close {vertical-align: text-top;}
+#signin.hide, #signup.hide, #close.hide, #auth_inputs.hide {width: 0px; padding: 0px; opacity: 0;}
 
-nav a {
-  color: white;
-  display: inline-block;
-  padding: 10px;
-}
 
-#auth {
-  font-size: 0;
-  position: absolute;
-  top: 0; right: 0;
-  width: 200px;
-  height: 40px;
-  background: rgb(100,10,10);
-}
-
-#auth_inputs {
-  transition: .2s all;
-  overflow: hidden;
-}
-button {
-  border: none;
-  color: white;
-  box-sizing: border-box;
-  padding: 10px;
-  width: 200px;
-}
-input {
-  border: none;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 10px;
-}
-
-#signup, #signin, #close, #signout, #name, #facebook, #google {text-align: center;}
-#signup, #signin, #close, #signout, #name, #facebook, #google, button {cursor: pointer;}
-#signup, #signin, #close, #signout, #name, #facebook, #google, input, button {font-size: 16px;}
-#signup, #signin, #close, #signout {transition: .2s all;}
-#signup, #signin, #close, #facebook, #google {
-  box-sizing: border-box;
-  padding: 10px;
-  display: inline-block;
-  width: 100px;
-}
-.expand, #signout, #close, button {background: rgb(20,20,20) !important;}
-#signout {float: right;box-sizing: border-box; padding: 10px 30px; height: 40px;}
-#name {position: fixed; top: 0; right: 120px; box-sizing: border-box; padding: 10px 30px; height: 40px;}
+/*Individual Styles*/
+nav {background: rgb(100, 10, 10); border-bottom: 1px solid rgb(20,20,20); font-size: 0;}
+#home {margin-left: 10px;}
+#auth {text-align: center;}
+#auth_inputs {position: fixed; right: 0px; top: 40px; overflow: hidden;}
 #google {background: white; color: black;}
 #facebook {background: rgb(50, 86, 210);}
+#facebook a {display: inline-block; width: 100%; height: 100%; padding: 0px !important;}
+#name {padding: 10px 0px 10px 20px;}
+#name-img {
+  float: right;
+  height: 30px; width: 40px;
+  margin: 5px 10px;
+  border: 1px solid white;
+}
+#signout {padding: 10px 20px; margin: 0;}

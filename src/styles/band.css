@@ -1,0 +1,53 @@
+#band-content {height: calc(100% - 80px); width: 100%; font: 0px "Droid Sans"; box-shadow: 0px 0px 1px 1px rgba(0,0,0,.5);}
+.band, .name {vertical-align: text-top;}
+header, footer {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  height: 40px;
+  box-sizing: border-box;
+  background: rgb(100,10,10);
+}
+header {border-bottom: 1px solid black;}
+.action {
+  cursor: pointer;
+  font-size: 16px;
+  display: inline-block;
+  text-align: center;
+  color: white;
+  box-sizing: border-box;
+  padding: 10px;
+  width: calc(100% / 3);
+}
+.band {
+  height: calc(100% - 140px);
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+}
+.name {
+  box-sizing: border-box;
+  height: 100px;
+  vertical-align: text-top;
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  padding: 20px 0px 0px 0px;
+  font-weight: 700;
+  text-shadow: 1px 1px black, -1px 1px black, -1px -1px black, 1px -1px black;
+}
+footer {border-top: 1px solid black;}
+#edit, #submit, #cancel {
+  cursor: pointer;
+  transition: .2s all;
+  font-size: 16px;
+  display: inline-block;
+  text-align: center;
+  color: white;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#edit {width: 100%; padding: 10px;}
+#edit.hide {width: 0%; padding: 0px;}
+#submit, #cancel {width: 0; padding: 0px;}
+#submit.show, #cancel.show {width: 50%; padding: 10px;}

@@ -25,6 +25,30 @@ if(el("#signup")) click("#signup", e => openAuthDrawer("signup"));
 if(el("#signin")) click("#signin", e => openAuthDrawer("signin"));
 if(el("#close")) click("#close", e => closeAuthDrawer());
 
+if(el("#edit")) ["#edit", "#cancel", "#submit"].forEach(e => click(e, () => {
+  el("#edit").classList.toggle("hide");
+  el("#cancel").classList.toggle("show");
+  el("#submit").classList.toggle("show");
+}));
+
+if(el("#bands-content")) click("#bands-content", e => {
+  if(e.target.classList.contains("action")) action(e.target);
+});
+
+function action(target){
+  var name = target.textContent.toLowerCase(),
+    drawer = el("." + name, target.parentNode)[0],
+    active = el(".active", target.parentNode)[0],
+    unhidden = el(".unhide", target.parentNode)[0],
+    isActive = target.classList.contains("active");
+  if(active) active.classList.remove("active");
+  if(unhidden) unhidden.classList.remove("unhide");
+  if(!isActive){
+    target.classList.add("active");
+    drawer.classList.add("unhide");
+  }
+}
+
 // nothing here for now
 
 function el(id, parent){

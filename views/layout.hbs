@@ -7,12 +7,12 @@
   </head>
   <body>
     <nav>
-      <a href="/">Home</a>
+      <a id="home" href="/">Home</a>
       <a href="/bands">Bands</a>
       <div id="auth">
         {{#if user}}
-          <div id="name">{{user.name}}</div>
           <a id="signout" href="/users/signout">Sign Out</a>
+          <div id="name">{{user.name}}</div>
         {{else}}
           <div id="signup">Sign Up</div>
           <div id="signin">Sign In</div>
