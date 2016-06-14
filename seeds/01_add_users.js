@@ -3,6 +3,7 @@ var bcrypt = require('bcrypt');
 exports.seed = function(knex, Promise) {
     return Promise.join(
         // Delete all current users
+        knex('gigs').del(),
         knex('songs').del(),
         knex('users_bands').del(),
         knex('bands').del(),

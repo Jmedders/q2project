@@ -25,6 +25,7 @@ router.get('/:band_id', (req, res) => {
     // var data = getBandData(req.params.band_id); // Get data from id.
 
     var members = [];
+    var gigs = [];
 
     knex('bands')
         .innerJoin('users_bands', 'users_bands.bands_id', 'bands.id')
@@ -36,9 +37,24 @@ router.get('/:band_id', (req, res) => {
                     name: data[i].display_name
                 });
             }
-            res.render('band', {
-                members: members
-            });
+            return knex('gigs')
+                .innerJoin('bands', 'gigs.band_id', 'bands.id')
+                .where('bands.id', req.params.band_id)
+                .then(function(data) {
+                    for (var i = 0; i < data.length; i++) {
+                        gigs.push({
+                            date: data[i].gig_date,
+                            venue: data[i].venue,
+                            loadInTime: data[i].load_in_time,
+                            startTime: data[i].start_time,
+                            endTime: data[i].end_time
+                        });
+                    }
+                    res.render('band', {
+                        members: members,
+                        gigs: gigs
+                    });
+                })
         });
 
     // if ( /*user is admin of band*/ true) data.isAdmin = true;
