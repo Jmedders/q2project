@@ -63,6 +63,31 @@ exports.seed = function(knex, Promise) {
       time_signature: '4/4',
       feel: 'punk grock',
       tempo: 117
+    }),
+
+    knex('songs').insert({
+      song_name: 'Jeremy',
+      band_id: 4,
+      song_key: 'G',
+      time_signature: '4/4',
+      feel: 'grunge',
+      tempo: 105
+    }),
+    knex('songs').insert({
+      song_name: 'Daughter',
+      band_id: 4,
+      song_key: 'G',
+      time_signature: '4/4',
+      feel: 'grunge',
+      tempo: 97
+    }),
+    knex('songs').insert({
+      song_name: 'Yellow Ledbetter',
+      band_id: 4,
+      song_key: 'E',
+      time_signature: '4/4',
+      feel: 'grunge',
+      tempo: 70
     })
 
 
