@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
         .createTable('songs_setlists', function(table) {
             table.integer('songs_id').references('songs.id');
             table.integer('setlists_id').references('setlists.id');
+            table.integer('order_in_list');
             table.primary(['songs_id', 'setlists_id']);
         });
 };
