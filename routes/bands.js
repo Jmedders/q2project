@@ -26,6 +26,7 @@ router.get('/:band_id', (req, res, next) => {
       res.render('band', {
         band: data
       });
+
     })
 
 
