@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
         .createTable('users_bands', function(table) {
             table.integer('users_id').references('users.id');
             table.integer('bands_id').references('bands.id');
+            table.boolean('is_admin').defaultsTo(false).notNullable();
             table.primary(['users_id', 'bands_id']);
         })
         .createTable('songs_setlists', function(table) {
