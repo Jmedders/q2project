@@ -22,6 +22,7 @@ exports.up = function(knex, Promise) {
             table.increments();
             table.string('setlist_name');
             table.string('description');
+            table.integer('band_id').references('bands.id');
         })
         .createTable('gigs', function(table) {
             table.increments();

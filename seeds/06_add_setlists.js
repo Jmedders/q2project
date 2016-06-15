@@ -3,15 +3,18 @@ exports.seed = function(knex, Promise) {
 
         knex('setlists').insert({
           setlist_name: 'Bananas',
-          description: 'Our go-to set'
+          description: 'Our go-to set',
+          band_id: 1
         }),
         knex('setlists').insert({
           setlist_name: 'Apples',
-          description: 'Our backup set'
+          description: 'Our backup set',
+          band_id: 1
         }),
         knex('setlists').insert({
           setlist_name: 'Peaches',
-          description: 'Quite tasty'
+          description: 'Quite tasty',
+          band_id: 3
         })
     );
 };
