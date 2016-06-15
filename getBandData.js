@@ -45,25 +45,51 @@ var getBandData = id => {
                 songs.push(song);
             }
             bandObj.songs = songs;
-            return knex('setlists')  // return a knex promise chain
-                    .select('setlist_name', 'order_in_list', 'song_name')
-                    .innerJoin('songs_setlists', 'setlists_id', 'setlists.id')
-                    .innerJoin('songs', 'songs_id', 'songs.id')
-                    .where('setlists.band_id', 1)
-                    .orderBy('setlists_id')
-                    .orderBy('order_in_list')
-                    // .groupBy('setlists_id', 'setlists.id', 'songs_id', 'songs.id')
+            return knex('setlists') // return a knex promise chain
+                .select('setlist_name as setlist_title', 'order_in_list', 'song_name', 'setlists.id as set_id')
+                .innerJoin('songs_setlists', 'setlists_id', 'setlists.id')
+                .innerJoin('songs', 'songs_id', 'songs.id')
+                .where('setlists.band_id', id)
+                .orderBy('setlists_id')
+                .orderBy('order_in_list')
+
         })
         .then(data => { // Take the data from the last query and add setlist objects
-            console.log(data);
             var setlists = [];
-
+            var usedIds = [];
+            for (var i = 0; i < data.length; i++) {
+                if (usedIds.indexOf(data[i].set_id) === -1) {
+                    usedIds.push(data[i].set_id);
+                    setlists.push({
+                        setlist_title: data[i].setlist_title,
+                        set_id: data[i].set_id,
+                        songs: []
+                    })
+                }
+            }
+            var songs = [];
+            for (var i = 0; i < data.length; i++) {
+                var song = {
+                    song_title: data[i].song_name,
+                    set_id: data[i].set_id,
+                    order_in_list: data[i].order_in_list
+                }
+                songs.push(song);
+            }
+            for (var song of songs) {
+                for (var setlist of setlists) {
+                    if (setlist.set_id === song.set_id) {
+                        setlist.songs.push(song);
+                    }
+                }
+            }
+            bandObj.setlists = setlists;
         })
         .then(() => { // Show us the built band object and exit
             // console.log(bandObj);
-            process.exit();
+            return bandObj;
+            // process.exit();
         });
-
 };
 
 getBandData(1);

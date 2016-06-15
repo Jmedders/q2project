@@ -25,14 +25,14 @@ module.exports = {
     ],
     setlists: [
       {title: "Short Set", set_id: 0, songs: [
-        {title: "Hello Goodbye", song_id: 2, yt_id: "rblYSKz_VnI"},
-        {title: "She Loves You", song_id: 3, yt_id: "BOuu88OwdK8"}
+        {song_title: "Hello Goodbye", song_id: 2, yt_id: "rblYSKz_VnI"},
+        {song_title: "She Loves You", song_id: 3, yt_id: "BOuu88OwdK8"}
       ]},
       {title: "Long Set", set_id: 1, songs: [
-        {title: "Ticket to Ride", song_id: 0, yt_id: "70-WSgZn1MQ"},
-        {title: "I Feel Fine", song_id: 1, yt_id: "ZFleHMgn8dg"},
-        {title: "Hello Goodbye", song_id: 2, yt_id: "rblYSKz_VnI"},
-        {title: "She Loves You", song_id: 3, yt_id: "BOuu88OwdK8"}
+        {song_title: "Ticket to Ride", song_id: 0, yt_id: "70-WSgZn1MQ"},
+        {song_title: "I Feel Fine", song_id: 1, yt_id: "ZFleHMgn8dg"},
+        {song_title: "Hello Goodbye", song_id: 2, yt_id: "rblYSKz_VnI"},
+        {song_title: "She Loves You", song_id: 3, yt_id: "BOuu88OwdK8"}
       ]}
     ]
   }][id]
