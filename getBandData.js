@@ -1,11 +1,11 @@
 var knex = require('knex')(require('./knexfile.js').development);
-// Function to take a band id and return a band object
-var getBandData = id => {
+
+function getBandData(id) {
 
     var bandObj = {}; //create an empty object
     bandObj.band_id = id; //set the object's band_id to the id passed into the function
 
-    knex('bands').select('band_name').first().where('id', id) // Get band name from DB
+    return knex('bands').select('band_name').first().where('id', id) // Get band name from DB
         .then(data => { // Take the data from the first query and add the band name
             bandObj.name = data.band_name;
             return knex('users').select('display_name', 'id as user_id') // return a knex promise chain
@@ -84,12 +84,14 @@ var getBandData = id => {
                 }
             }
             bandObj.setlists = setlists;
-        })
-        .then(() => { // Show us the built band object and exit
             // console.log(bandObj);
-            return bandObj;
-            // process.exit();
+            return Promise.resolve(bandObj);
+        })
+        .catch(function(reason) {
+          return Promise.reject(reason);
         });
-};
+}
 
-getBandData(1);
+module.exports = {
+    getBandData: getBandData
+};

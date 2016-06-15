@@ -103,6 +103,9 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', FBAPI.redir
 app.use('/', require('./routes/index')); // Pulls router from index.
 app.use('/users', require('./routes/users')); // Pulls router from users.
 app.use('/bands', require('./routes/bands')); // Pulls router from bands.
+// app.use('/songs', require('./routes/songs')); // Pulls router from songs.
+// app.use('/setlists', require('./routes/setlists')); // Pulls router from setlists.
+
 
 // Error Handling
 app.use((req, res, next) => { // If no other route runs this will 404.
