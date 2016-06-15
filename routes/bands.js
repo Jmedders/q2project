@@ -21,9 +21,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:band_id', (req, res, next) => {
-    getBandData(1).then(function(data) {
+    getBandData(req.params.band_id).then(function(data) {
       console.log(data);
-      res.render('band', {});
+      res.render('band', {data});
     })
 
 
