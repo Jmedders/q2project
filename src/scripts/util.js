@@ -6,5 +6,5 @@ function el(id, parent){
 }
 function click(e, cb){
   e = (e[0] === "#") ? el(e) : el(e)[0]; // getElementById returns one element, anything else returns an array.
-  e.addEventListener("click", cb);
+  if(e) e.addEventListener("click", cb);
 }

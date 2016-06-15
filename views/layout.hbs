@@ -6,28 +6,33 @@
     <script type="text/javascript" src="/client.js" defer></script>
   </head>
   <body>
-    <nav>
-      <a id="home" href="/">Home</a>
-      <a href="/bands">Bands</a>
-      <div id="auth">
-        {{#if user}}
-          <a id="signout" href="/users/signout">Sign Out</a>
-          <div id="name">{{user.name}}</div>
-        {{else}}
-          <div id="signup">Sign Up</div>
-          <div id="signin">Sign In</div>
-          <div id="close" class="hide">Close</div>
-        {{/if}}
-        <form id="auth_inputs" method="post" action="/users/signup" class="hide">
-          <input type="text" name="username" placeholder="Enter Username" required>
-          <input type="password" name="password" placeholder="Enter Password" required>
-          <div id="facebook"><a href="/auth/facebook/callback">Facebook</a></div>
-          <div id="google">Google</div>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-    </nav>
-
+    <script>
+      window.fbAsyncInit = () => FB.init({appId: '1733575366928508', xfbml: true, version: 'v2.6'});
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <form method="post" class="abs-right auth ts w200">
+      {{#if user}}
+        <a href="./index.html" class="right link signout">Sign Out</a>
+        <div class="right link f13 bg20">{{user.name}}</div>
+      {{else}}
+        <div class="right link signin ts">Sign In</div>
+        <div class="right link signup ts">Sign Up</div>
+        <i class="abs-right material-icons close">close</i>
+        <input type="text" name="username" placeholder="Enter Username" class="w200 auth-input" required>
+        <input type="password" name="password" placeholder="Enter Password" class="w200 auth-input" required>
+        <div class="w200">
+          <a href="/auth/facebook/callback" class="link facebook">Facebook</a>
+          <div class="link google">Google</div>
+        </div>
+        <button type="submit" class="link w200 bg20">Submit</button>
+      {{/if}}
+    </form>
     {{{body}}}
   </body>
 </html>

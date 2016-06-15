@@ -1,4 +1,13 @@
-<div id="bands-content">
+<nav>
+  <a href="/" class="back bg20"><i class="material-icons">keyboard_arrow_left</i></a>
+  <a href="/bands" class="link w100 bg20">Bands</a>
+</nav>
+
+<div id="content" class="bands-content ts">
+  <div class="bands-heading mw800">Your Bands</div>
+  <a class="band-name" href="/bands/0">Next Year</a>
+  <a class="band-name" href="/bands/1">Effortless Amazing</a>
+  <div class="bands-heading">Public Bands</div>
   {{#bands}}
     <a class="band-name" href="/bands/{{band_id}}">{{name}}</a>
   {{/bands}}
