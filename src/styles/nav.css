@@ -26,7 +26,7 @@ nav {
 .signup.expand, .signin.expand {width: 200px; background: rgba(20,20,20,.8); cursor: default;}
 .close {color: white; cursor: pointer; opacity: 0; width: 0px;}
 .close.unhide {opacity: 1; width: auto; padding: 10px;}
-.auth {overflow: hidden; position: absolute; top: 0; right: 0; height: 39px;}
+.auth {overflow: hidden; position: absolute; top: 0; right: 0; height: 39px; z-index: 1;}
 .auth.unhide {height: 200px;}
 .auth-input {font: 16px "Droid Sans"; box-sizing: border-box; padding: 10px;}
 .facebook {background: rgb(50, 86, 210);}

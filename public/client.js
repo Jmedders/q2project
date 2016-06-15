@@ -1,55 +1,43 @@
-var authDrawerIsOpen = false;
-function openAuthDrawer(action){
-  if(authDrawerIsOpen) return;
-  var other = action === "signin" ? "signup" : "signin";
-  el("#close").classList.remove("hide");
-  el("#auth_inputs").classList.remove("hide");
-  el("#" + action).classList.add("expand");
-  el("#" + other).classList.add("hide");
-  el("#auth_inputs").setAttribute("action", "/users/" + action);
-  authDrawerIsOpen = action;
+var authDrawerIsOpen = false; // This is the state of the auth drawer.
+function openAuthDrawer(action){ // Open the auth drawer.
+  if(authDrawerIsOpen) return; // If the drawer is open don't do anything.
+  var other = action === "signin" ? "signup" : "signin"; // "Other" means the element that wasn't clicked.
+  el(".close")[0].classList.add("unhide"); // Show the close button.
+  el(".auth")[0].classList.add("unhide"); // Show the inputs.
+  el("." + action)[0].classList.add("expand"); // Expand the action you clicked.
+  el("." + other)[0].classList.add("hide"); // Hide the other action.
+  el(".auth")[0].setAttribute("action", "/users/" + action); // Set action on input form to whatever was clicked.
+  authDrawerIsOpen = action; // Set state to whatever you clicked. (this is important for closing the drawer)
 }
 
-function closeAuthDrawer(){
-  if(!authDrawerIsOpen) return;
-  var action = authDrawerIsOpen,
-    other = action === "signin" ? "signup" : "signin";
-  el("#close").classList.add("hide");
-  el("#auth_inputs").classList.add("hide");
-  el("#" + action).classList.remove("expand");
-  el("#" + other).classList.remove("hide");
-  authDrawerIsOpen = false;
+function closeAuthDrawer(){ // Close the auth drawer.
+  if(!authDrawerIsOpen) return; // If the drawer is closed don't do anything.
+  var action = authDrawerIsOpen, // The action is whatever the current state is.
+    other = action === "signin" ? "signup" : "signin"; // "Other" is the other action.
+  el(".close")[0].classList.remove("unhide"); // Hide the close button.
+  el(".auth")[0].classList.remove("unhide"); // Hide the inputs.
+  el("." + action)[0].classList.remove("expand"); // Make the action smaller.
+  el("." + other)[0].classList.remove("hide"); // Show the other action.
+  authDrawerIsOpen = false; // Set drawer state to false.
 }
 
-if(el("#signup")) click("#signup", e => openAuthDrawer("signup"));
-if(el("#signin")) click("#signin", e => openAuthDrawer("signin"));
-if(el("#close")) click("#close", e => closeAuthDrawer());
+click(".signup", e => openAuthDrawer("signup")); // Opens drawer and sets state to "signup".
+click(".signin", e => openAuthDrawer("signin")); // Opens drawer and sets state to "signin".
+click(".close", e => closeAuthDrawer()); // Closes drawer and sets state to false.
 
-if(el("#edit")) ["#edit", "#cancel", "#submit"].forEach(e => click(e, () => {
-  el("#edit").classList.toggle("hide");
-  el("#cancel").classList.toggle("show");
-  el("#submit").classList.toggle("show");
-}));
+var panels = ["gigs", "setlists", "songs"];
 
-if(el("#bands-content")) click("#bands-content", e => {
-  if(e.target.classList.contains("action")) action(e.target);
-});
+panels.forEach(e => click("." + e, panel));
 
-function action(target){
-  var name = target.textContent.toLowerCase(),
-    drawer = el("." + name, target.parentNode)[0],
-    active = el(".active", target.parentNode)[0],
-    unhidden = el(".unhide", target.parentNode)[0],
-    isActive = target.classList.contains("active");
-  if(active) active.classList.remove("active");
-  if(unhidden) unhidden.classList.remove("unhide");
-  if(!isActive){
-    target.classList.add("active");
-    drawer.classList.add("unhide");
-  }
+function panel(e){
+  var clicked = e.target.textContent.toLowerCase();
+  el("." + clicked)[0].classList.add("bg20a5");
+  panels.filter(e => e !== clicked).map(e => {el("." + e)[0].classList.remove("bg20a5");});
 }
 
-// nothing here for now
+function sidepanel(e){
+
+}
 
 function el(id, parent){
   if(!parent) parent = document;
@@ -59,5 +47,5 @@ function el(id, parent){
 }
 function click(e, cb){
   e = (e[0] === "#") ? el(e) : el(e)[0]; // getElementById returns one element, anything else returns an array.
-  e.addEventListener("click", cb);
+  if(e) e.addEventListener("click", cb);
 }
