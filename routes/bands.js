@@ -21,9 +21,11 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:band_id', (req, res, next) => {
-    getBandData(1).then(function(data) {
-      console.log(data);
-      res.render('band', {});
+    getBandData(req.params.band_id).then(function(data) {
+      // console.log(data['setlists'][0]['songs'][0]['song_title']);
+      res.render('band', {
+        band: data
+      });
     })
 
 
