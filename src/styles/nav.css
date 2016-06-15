@@ -1,35 +1,33 @@
-/*Pretend Classes*/
-nav, #auth, #signout, #name {height: 40px;}
-#auth, button {cursor: pointer;}
-input, button {border: none;}
-#auth_inputs, input, button {width: 200px;}
-nav, nav a, button {color: white;}
-#auth, button {background: rgb(20,20,20);}
-#auth, #auth-inputs, #signout, #name {float: right;}
-#facebook, #google {width: 50%;}
-#signup, #signin, #close {width: 100px;}
-nav a, #signup, #signin, #close, #signout, #name, #facebook, #google, input, button {font: 16px "Droid Sans";}
-#auth_inputs, #signup, #signin, #close {transition: .2s all;}
-#signup, #signin, #signout, #close, #facebook, #google, input, button, #name {box-sizing: border-box;}
-nav a, #signup, #signin, #close, #facebook, #google, input, button {padding: 10px;}
-nav a, #signup, #signin, #close, #facebook, #google {display: inline-block;}
-#signin, #signup, #close {vertical-align: text-top;}
-#signin.hide, #signup.hide, #close.hide, #auth_inputs.hide {width: 0px; padding: 0px; opacity: 0;}
-
-
-/*Individual Styles*/
-nav {background: rgb(100, 10, 10); border-bottom: 1px solid rgb(20,20,20); font-size: 0;}
-#home {margin-left: 10px;}
-#auth {text-align: center;}
-#auth_inputs {position: fixed; right: 0px; top: 40px; overflow: hidden;}
-#google {background: white; color: black;}
-#facebook {background: rgb(50, 86, 210);}
-#facebook a {display: inline-block; width: 100%; height: 100%; padding: 0px !important;}
-#name {padding: 10px 0px 10px 20px;}
-#name-img {
-  float: right;
-  height: 30px; width: 40px;
-  margin: 5px 10px;
-  border: 1px solid white;
+nav {
+  vertical-align: text-top;
+  background: rgb(100, 10, 10);
+  border-bottom: 1px solid black;
+  height: 39px;
+  overflow: hidden;
 }
-#signout {padding: 10px 20px; margin: 0;}
+
+.link {
+  transition: .2s all;
+  overflow: hidden;
+  display: inline-block;
+  box-sizing: border-box;
+  cursor: pointer;
+  font: 16px "Droid Sans";
+  padding: 10px;
+  text-align: center;
+  color: white;
+  opacity: 1;
+  width: 100px;
+}
+
+.back {vertical-align: bottom; height: 29px; padding-top: 10px; width: 20px; color: white; cursor: pointer;}
+.signin, .signup {border-bottom: 1px solid black;}
+.signup.hide, .signin.hide {width: 0px; padding: 0px; opacity: 0;}
+.signup.expand, .signin.expand {width: 200px; background: rgba(20,20,20,.8); cursor: default;}
+.close {color: white; cursor: pointer; opacity: 0; width: 0px;}
+.close.unhide {opacity: 1; width: auto; padding: 10px;}
+.auth {overflow: hidden; position: absolute; top: 0; right: 0; height: 39px;}
+.auth.unhide {height: 200px;}
+.auth-input {font: 16px "Droid Sans"; box-sizing: border-box; padding: 10px;}
+.facebook {background: rgb(50, 86, 210);}
+.google {background: white; color: black;}

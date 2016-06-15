@@ -1,11 +1,15 @@
-/* Reset */
-html, body {height: 100%; width: 100%; padding: 0; margin: 0; border: 0;}
-a {text-decoration: none;}
+html, body {border: 0; height: 100%; margin: 0; padding: 0; width: 100%;}
+a {text-decoration: none; display: inline-block;}
+input, button {border: none;}
 ::-webkit-scrollbar {display: none;}
-
-/* Base Styles */
 body {
   background-image: url("http://arounddeglobe.com/wp-content/uploads/2016/04/Kiyomizu-dera.jpg");
   background-size: cover;
   overflow: hidden;
+  font-size: 0;
+}
+#content {
+  position: relative;
+  background: linear-gradient(to right, rgba(40,10,10,.6), rgba(30,10,30,.6));
+  height: calc(100% - 40px);
 }

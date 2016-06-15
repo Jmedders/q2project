@@ -1,0 +1,10 @@
+.mw800 {margin: 0 auto; max-width: 800px; width: 100%;}
+.abs-right {position: absolute; right: 0;}
+.right {float: right;}
+.ts {transition: .2s all;}
+.w100 {width: 100px;}
+.w200 {width: 200px !important;}
+.wauto {width: auto !important; padding: 10px 20px !important;}
+.f13 {font-size: 13px !important; padding: 12px 10px !important;}
+.bg20 {background: rgba(20,20,20,.8);}
+.bg20a5 {background: rgba(20,20,20,.5);}

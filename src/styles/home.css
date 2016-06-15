@@ -1,13 +1,13 @@
-#index-content {
-  background: rgba(20,20,20,.9);
-  box-shadow: 0px 0px 1px 1px rgba(0,0,0,.5);
-  box-sizing: border-box;
+.home-content {
   color: white;
-  font-family: "Droid Sans";
-  left: 25%;
-  padding: 20px;
-  position: absolute;
+  font: 16px "Droid Sans";
+  padding: 200px 20px;
   text-align: center;
-  top: 25%;
-  width: 50%;
 }
+.home-content h1, .home-content h2, .home-content h3 {
+  text-shadow: 1px 1px black, 1px -1px black, -1px 1px black, -1px -1px black;
+}
+
+@media (max-width: 600px) {.home-content {font: 14px "Droid Sans";}}
+@media (max-width: 475px) {.home-content {font: 12px "Droid Sans";}}
+@media (max-width: 420px) {.home-content {font: 10px "Droid Sans";}}
