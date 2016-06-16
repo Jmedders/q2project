@@ -3,6 +3,7 @@
 .right {float: right;}
 .ts {transition: .2s all;}
 .w100 {width: 100px;}
+.w250 {width: 250px !important;}
 .w200 {width: 200px !important;}
 .wauto {width: auto !important; padding: 10px 20px !important;}
 .f13 {font-size: 13px !important; padding: 12px 10px !important;}
