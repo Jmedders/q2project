@@ -1,5 +1,27 @@
 var knex = require('knex')(require('./knexfile.js').development);
 
+
+function formatDate(dateStr){
+  var date = new Date(dateStr),
+    month = date.getMonth(),
+    day = date.getDate();
+  return month + "/" + day;
+}
+
+function formatTime(time){
+  var hour = time.split(":")[0],
+    minute = time.split(":")[1],
+    ampm = "am";
+  if(parseInt(hour) === 12) ampm = "pm";
+  if(parseInt(hour) > 12){
+    hour -= 12;
+    ampm = "pm";
+  }
+  return `${hour}:${minute}${ampm}`;
+}
+
+var knex = require('knex')(require('./knexfile.js').development);
+
 function getBandData(id) {
 
     var bandObj = {}; //create an empty object
@@ -20,18 +42,33 @@ function getBandData(id) {
             bandObj.members = members;
             return knex('gigs') // return a knex promise chain
                 .select(
-                    'id as gig_id',
+                    'gigs.id as gig_id',
                     'gig_date as date',
                     'venue',
                     'load_in_time as loadInTime',
                     'start_time as startTime',
                     'end_time as endTime',
-                    'setlist_id')
-                .where('band_id', id)
+                    'setlist_id',
+                    'setlists.*')
+                .leftJoin('setlists', 'setlists.id', 'gigs.setlist_id')
+                .where('gigs.band_id', id)
         })
         .then(data => { // Take the data from the last query and add gig objects
             var gigs = [];
             for (var gig of data) {
+                if (gig.setlist_id) {
+                    var setlist = {
+                        setlist_name: gig.setlist_name,
+                        description: gig.description
+                    };
+                    gig.setlist = setlist;
+                } else {
+                    gig.setlist = null;
+                }
+                ["loadInTime", "startTime", "endTime"].forEach(key => {
+                  gig[key] = formatTime(gig[key]);
+                });
+                gig.date = formatDate(gig.date);
                 gigs.push(gig);
             }
             bandObj.gigs = gigs;
@@ -84,10 +121,11 @@ function getBandData(id) {
                 }
             }
             bandObj.setlists = setlists;
+            console.log(bandObj);
             return Promise.resolve(bandObj);
         })
         .catch(function(reason) {
-          return Promise.reject(reason);
+            return Promise.reject(reason);
         });
 }
 

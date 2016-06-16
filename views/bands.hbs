@@ -4,9 +4,12 @@
 </nav>
 
 <div id="content" class="bands-content ts">
-  <div class="bands-heading mw800">Your Bands</div>
-  <a class="band-name" href="/bands/0">Next Year</a>
-  <a class="band-name" href="/bands/1">Effortless Amazing</a>
+  {{#if user}}
+    <div class="bands-heading mw800">Your Bands</div>
+    {{#user.bands}}
+      <a href="band-name" href="/bands/{{band_id}}">{{name}}</a>
+    {{/user.bands}}
+  {{/if}}
   <div class="bands-heading">Public Bands</div>
   {{#bands}}
     <a class="band-name" href="/bands/{{band_id}}">{{name}}</a>
