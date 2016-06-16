@@ -21,10 +21,10 @@ app.use(express.static(__dirname + "/public")); // Sets static file directory.
 
 // Auth
 var FBAPI = { // Should probably put some of this stuff in the .env
-  
+
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    callbackURL: process.env.CALLBACK_URL,
     redirects: {
         successRedirect: '/bands',
         failureRedirect: '/'
