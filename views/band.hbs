@@ -1,194 +1,63 @@
 <nav>
-  <a href="/bands" class="back bg20"><i class="material-icons">keyboard_arrow_left</i></a>
-  <a href="/bands/0" class="link bg20 wauto">{{band.name}}</a>
-  <label for="gigs-input" class="link gigs bg20a5">Gigs</label>
-  <label for="setlists-input" class="link setlists">Setlists</label>
-  <label for="songs-input" class="link songs">Songs</label>
+  <a href="/bands" class="back bg20" style="position: absolute;"><i class="material-icons">keyboard_arrow_left</i></a>
+  <a href="/bands/{{band.band_id}}" class="link bg20 w250">{{band.name}}</a>
 </nav>
 <div id="content" class="band-content">
-
-  <input id="gigs-input" type="radio" name="panel" checked>
   <div id="gigs" class="panel">
     <div class="panel-side">
-      <label for="gig-0" class="title">June 17 - Galvanize</label>
-      <label for="gig-1" class="title">June 19 - 5280 Burger Bar</label>
-      <label for="gig-2" class="title">July 4 - Madison Square Garden</label>
+      <div class="heading">Upcoming Gigs</div>
+      {{#band.gigs}}
+        <label for="gig-{{gig_id}}" class="title">
+          <div>{{date}}</div>
+          <div>{{venue}}</div>
+        </label>
+      {{/band.gigs}}
     </div>
-    <input id="gig-0" type="radio" name="gig">
-    <div class="panel-main">
-      <div class="gig-title">Galvanize</div>
-      <div class="gig-date">
-        <div>Date</div>
-        <div>June 17</div>
+    {{#band.gigs}}
+      <input id="gig-{{gig_id}}" type="radio" name="gig">
+      <div class="panel-main">
+        <div class="gig-title">{{venue}}</div>
+        <div class="gig-date">
+          <div>Date</div>
+          <div>{{date}}</div>
+        </div>
+        <div class="gig-load">
+          <div>Load</div>
+          <div>{{loadInTime}}</div>
+        </div>
+        <div class="gig-start">
+          <div>Start</div>
+          <div>{{startTime}}</div>
+        </div>
+        <div class="gig-end">
+          <div>End</div>
+          <div>{{endTime}}</div>
+        </div>
+
+        <div class="gig-setlist">setlist_title</div>
+
+        <!-- Loop over songs in setlist -->
+        <input id="gig-{{gig_id}}-song-song_id" type="checkbox" name="setlist-0">
+        <label class="gig-song" for="gig-{{gig_id}}-song-song_id">song_title</label>
+        <div class="song-info">
+          <div class="song-key">
+            <div>Key</div>
+            <div>song_key</div>
+          </div>
+          <div class="time-signature">
+            <div>Signature</div>
+            <div>time_signature</div>
+          </div>
+          <div class="feel">
+            <div>Feel</div>
+            <div>feel</div>
+          </div>
+          <div class="tempo">
+            <div>Tempo</div>
+            <div>tempo</div>
+          </div>
+        </div>
+
       </div>
-      <div class="gig-load">
-        <div>Load</div>
-        <div>9am</div>
-      </div>
-      <div class="gig-start">
-        <div>Start</div>
-        <div>1pm</div>
-      </div>
-      <div class="gig-end">
-        <div>End</div>
-        <div>4pm</div>
-      </div>
-      <div class="gig-setlist">Beatles Covers</div>
-
-      <input id="song-0-0" type="checkbox" name="setlist-0">
-      <label class="gig-song" for="song-0-0"></label>
-      <div class="song-info">
-      <!-- song_key: 'Am', time_signature: '4/4', feel: 'weepy', tempo: 115 -->
-      </div>
-
-      <input id="song-0-1" type="checkbox" name="setlist-0">
-      <label class="gig-song" for="song-0-1">Yesterday</label>
-      <div class="song-info">
-      <!-- song_key: 'F', time_signature: '4/4', feel: 'longing', tempo: 97 -->
-      </div>
-
-      <input id="song-0-2" type="checkbox" name="setlist-0">
-      <label class="gig-song" for="song-0-2">Norwegian Mood</label>
-      <div class="song-info">
-      <!-- song_key: 'E', time_signature: '6/8', feel: 'scandinavian psychedelic', tempo: 177 -->
-      </div>
-    </div>
-    <input id="gig-1" type="radio" name="gig">
-    <div class="panel-main">
-      <div class="gig-title">5280 Burger Bar</div>
-      <div class="gig-date">
-        <div>Date</div>
-        <div>June 19</div>
-      </div>
-      <div class="gig-load">
-        <div>Load</div>
-        <div>8pm</div>
-      </div>
-      <div class="gig-start">
-        <div>Start</div>
-        <div>10pm</div>
-      </div>
-      <div class="gig-end">
-        <div>End</div>
-        <div>12am</div>
-      </div>
-      <div class="gig-setlist">Radiohead Covers</div>
-
-      <input id="song-1-0" type="checkbox" name="setlist-1">
-      <label class="gig-song" for="song-1-0">Creep</label>
-      <div class="song-info"></div>
-
-      <input id="song-1-1" type="checkbox" name="setlist-1">
-      <label class="gig-song" for="song-1-1">The National Anthem</label>
-      <div class="song-info"></div>
-
-      <input id="song-1-2" type="checkbox" name="setlist-1">
-      <label class="gig-song" for="song-1-2">2 + 2 = 5</label>
-      <div class="song-info"></div>
-    </div>
-    <input id="gig-2" type="radio" name="gig">
-    <div class="panel-main">
-      <div class="gig-title">Madison Square Garden</div>
-      <div class="gig-date">
-        <div>Date</div>
-        <div>July 4</div>
-      </div>
-      <div class="gig-load">
-        <div>Load</div>
-        <div>4pm</div>
-      </div>
-      <div class="gig-start">
-        <div>Start</div>
-        <div>9pm</div>
-      </div>
-      <div class="gig-end">
-        <div>End</div>
-        <div>2am</div>
-      </div>
-      <div class="gig-setlist">Fullstack Folk</div>
-
-      <input id="song-2-0" type="checkbox" name="setlist-1">
-      <label class="gig-song" for="song-2-0">We Fought the OAuth Kraken</label>
-      <div class="song-info"></div>
-
-      <input id="song-2-1" type="checkbox" name="setlist-1">
-      <label class="gig-song" for="song-2-1">Give Me All You Data, Baby</label>
-      <div class="song-info"></div>
-
-      <input id="song-2-2" type="checkbox" name="setlist-1">
-      <label class="gig-song" for="song-2-2">Galvanize This!</label>
-      <div class="song-info"></div>
-    </div>
-  </div>
-
-  <input id="setlists-input" type="radio" name="panel">
-  <div id="setlists" class="panel">
-    <div class="panel-side">
-      <label for="setlist-0" class="title">Beatles Covers</label>
-      <label for="setlist-1" class="title">Radiohead Covers</label>
-      <label for="setlist-2" class="title">Fullstack Folk</label>
-    </div>
-    <input id="setlist-0" type="radio" name="setlist">
-    <div class="panel-main">
-      <div class="gig-setlist">Beatles Covers</div>
-
-      <input id="song-0-0" type="checkbox" name="setlist-0">
-      <label class="gig-song" for="song-0-0">While My Guitar Gently Weeps</label>
-      <div class="song-info">
-      <!-- song_key: 'Am', time_signature: '4/4', feel: 'weepy', tempo: 115 -->
-      </div>
-
-      <input id="song-0-1" type="checkbox" name="setlist-0">
-      <label class="gig-song" for="song-0-1">Yesterday</label>
-      <div class="song-info">
-      <!-- song_key: 'F', time_signature: '4/4', feel: 'longing', tempo: 97 -->
-      </div>
-
-      <input id="song-0-2" type="checkbox" name="setlist-0">
-      <label class="gig-song" for="song-0-2">Norwegian Mood</label>
-      <div class="song-info">
-      <!-- song_key: 'E', time_signature: '6/8', feel: 'scandinavian psychedelic', tempo: 177 -->
-      </div>
-    </div>
-    <input id="setlist-1" type="radio" name="setlist">
-    <div class="panel-main">
-      <div class="gig-setlist">Radiohead Covers</div>
-
-      <input id="song-1-0" type="checkbox" name="setlist-1">
-      <label class="gig-song" for="song-1-0">Creep</label>
-      <div class="song-info"></div>
-
-      <input id="song-1-1" type="checkbox" name="setlist-1">
-      <label class="gig-song" for="song-1-1">The National Anthem</label>
-      <div class="song-info"></div>
-
-      <input id="song-1-2" type="checkbox" name="setlist-1">
-      <label class="gig-song" for="song-1-2">2 + 2 = 5</label>
-      <div class="song-info"></div>
-
-    </div>
-    <input id="setlist-2" type="radio" name="setlist">
-    <div class="panel-main">
-      <div class="gig-setlist">Fullstack Folk</div>
-
-      <input id="song-2-0" type="checkbox" name="setlist-1">
-      <label class="gig-song" for="song-2-0">We Fought the OAuth Kraken</label>
-      <div class="song-info"></div>
-
-      <input id="song-2-1" type="checkbox" name="setlist-1">
-      <label class="gig-song" for="song-2-1">Give Me All You Data, Baby</label>
-      <div class="song-info"></div>
-
-      <input id="song-2-2" type="checkbox" name="setlist-1">
-      <label class="gig-song" for="song-2-2">Galvanize This!</label>
-      <div class="song-info"></div>
-    </div>
-  </div>
-
-  <input id="songs-input" type="radio" name="panel">
-  <div id="songs" class="panel">
-    <div class="panel-side"></div>
-    <div class="panel-main"></div>
-  </div>
-
+    {{/band.gigs}}
 </div>

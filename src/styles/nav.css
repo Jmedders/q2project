@@ -20,7 +20,7 @@ nav {
   width: 100px;
 }
 
-.back {vertical-align: bottom; height: 29px; padding-top: 10px; width: 20px; color: white; cursor: pointer;}
+.back {vertical-align: bottom; height: 40px; padding: 10px; box-sizing: border-box; width: 40px; color: white; cursor: pointer;}
 .signin, .signup {border-bottom: 1px solid black;}
 .signup.hide, .signin.hide {width: 0px; padding: 0px; opacity: 0;}
 .signup.expand, .signin.expand {width: 200px; background: rgba(20,20,20,.8); cursor: default;}

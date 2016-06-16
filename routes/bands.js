@@ -42,10 +42,12 @@ router.get('/:band_id', (req, res, next) => {
 
 router.get('/:band_id', function(req, res, next) {
     getBandData(req.params.band_id).then(function(data) {
+      //console.log(data);
         res.render('band', {
             band: data
         });
     })
+    .catch(next)
 });
 
 router.post('/:band_id', function(req, res, next) {
