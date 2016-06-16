@@ -7,7 +7,7 @@ exports.seed = function(knex, Promise) {
           venue: 'Red Rocks',
           load_in_time: '5:00 PM',
           start_time: '7:00 PM',
-          end_time: '10:00 PM'
+          end_time: '10:00 PM',
         }),
         knex('gigs').insert({
           band_id: 1,
