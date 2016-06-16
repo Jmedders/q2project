@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
     var magic = Magic(1, ubands => {
       knex('bands')
           .then(function(data) {
-            console.log(data);
             bands = data;
             if(ubands && res.locals.user){
               res.locals.user.bands = ubands;

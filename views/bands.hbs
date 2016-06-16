@@ -8,11 +8,11 @@
     {{!-- {{log user.bands}} --}}
     <div class="bands-heading mw800">Your Bands</div>
     {{#user.bands}}
-      <a class="band-name" href="/bands/{{band_id}}">{{band_name}}</a>
+      <a class="band-name" href="/bands/{{id}}">{{band_name}}</a>
     {{/user.bands}}
   {{/if}}
   <div class="bands-heading">Public Bands</div>
   {{#bands}}
-    <a class="band-name" href="/bands/{{band_id}}">{{band_name}}</a>
+    <a class="band-name" href="/bands/{{id}}">{{band_name}}</a>
   {{/bands}}
 </div>
