@@ -2,6 +2,29 @@ var knex = require('knex')(require('./knexfile.js').development);
 
 function getBandData(id) {
 
+    function formatDate(dateStr) {
+        var date = new Date(dateStr),
+            month = date.getMonth(),
+            day = date.getDate();
+        return month + "/" + day;
+    }
+
+    function formatTime(time) {
+        var hour = time.split(":")[0],
+            minute = time.split(":")[1],
+            ampm = "am";
+        if (parseInt(hour) === 12) ampm = "pm";
+        if (parseInt(hour) > 12) {
+            hour -= 12;
+            ampm = "pm";
+        }
+        return `${hour}:${minute}${ampm}`;
+    }
+
+
+
+
+
     var bandObj = {}; //create an empty object
     bandObj.band_id = id; //set the object's band_id to the id passed into the function
 
@@ -35,6 +58,12 @@ function getBandData(id) {
         .then(data => { // Take the data from the last query and add gig objects
             var gigs = [];
             for (var gig of data) {
+
+                ["loadInTime", "startTime", "endTime"].forEach(key => {
+                    gig[key] = formatTime(gig[key]);
+                });
+
+                gig.date = formatDate(gig.date);
                 if (gig.setlist_id) {
                     var setlist = {
                         setlist_name: gig.setlist_name,
