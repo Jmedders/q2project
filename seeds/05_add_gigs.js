@@ -7,8 +7,7 @@ exports.seed = function(knex, Promise) {
           venue: 'Red Rocks',
           load_in_time: '8:30 PM',
           start_time: '9:00 PM',
-          end_time: '10:00 PM',
-          setlist_id: 1
+          end_time: '10:00 PM'
         }),
         knex('gigs').insert({
           band_id: 1,
@@ -16,8 +15,7 @@ exports.seed = function(knex, Promise) {
           venue: 'Mars',
           load_in_time: '8:00 PM',
           start_time: '7:00 PM',
-          end_time: '10:00 PM',
-          setlist_id: 1
+          end_time: '10:00 PM'
         }),
         knex('gigs').insert({
           band_id: 3,
@@ -25,8 +23,7 @@ exports.seed = function(knex, Promise) {
           venue: 'Boulder Theatre',
           load_in_time: '5:45 PM',
           start_time: '7:30 PM',
-          end_time: '8:00 PM',
-          setlist_id: 5
+          end_time: '8:00 PM'
         }),
         knex('gigs').insert({
           band_id: 2,
@@ -34,8 +31,7 @@ exports.seed = function(knex, Promise) {
           venue: 'Fox Theater',
           load_in_time: '5:45 PM',
           start_time: '7:00 PM',
-          end_time: '10:00 PM',
-          setlist_id: 7
+          end_time: '10:00 PM'
         }),
         knex('gigs').insert({
           band_id: 4,
@@ -43,8 +39,7 @@ exports.seed = function(knex, Promise) {
           venue: 'Ogden',
           load_in_time: '6:45 PM',
           start_time: '7:00 PM',
-          end_time: '7:45 PM',
-          setlist_id: 4
+          end_time: '7:45 PM'
         }),
         knex('gigs').insert({
           band_id: 1,
@@ -52,8 +47,7 @@ exports.seed = function(knex, Promise) {
           venue: 'Bluebird',
           load_in_time: '9:45 AM',
           start_time: '10:00 AM',
-          end_time: '12:00 PM',
-          setlist_id: 2
+          end_time: '12:00 PM'
         }),
         knex('gigs').insert({
           band_id: 2,
@@ -61,8 +55,7 @@ exports.seed = function(knex, Promise) {
           venue: 'Denver Opera',
           load_in_time: '5:45 PM',
           start_time: '8:00 PM',
-          end_time: '10:15 PM',
-          setlist_id: 8
+          end_time: '10:15 PM'
         }),
         knex('gigs').insert({
           band_id: 4,
@@ -70,8 +63,7 @@ exports.seed = function(knex, Promise) {
           venue: 'Fiske Planetarium',
           load_in_time: '5:45 PM',
           start_time: '7:00 PM',
-          end_time: '10:30 PM',
-          setlist_id: 6
+          end_time: '10:30 PM'
         }),
         knex('gigs').insert({
           band_id: 3,
@@ -79,8 +71,7 @@ exports.seed = function(knex, Promise) {
           venue: 'Taco Junky',
           load_in_time: '2:45 PM',
           start_time: '4:00 PM',
-          end_time: '7:00 PM',
-          setlist_id: 5
+          end_time: '7:00 PM'
         }),
         knex('gigs').insert({
           band_id: 3,
@@ -88,8 +79,7 @@ exports.seed = function(knex, Promise) {
           venue: 'Electric Zoo',
           load_in_time: '5:45 PM',
           start_time: '7:00 PM',
-          end_time: '9:00 PM',
-          setlist_id: 3
+          end_time: '9:00 PM'
         })
     );
 };
