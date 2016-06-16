@@ -30,6 +30,7 @@ function getBandData(id) {
 
     return knex('bands').select('band_name').first().where('id', id) // Get band name from DB
         .then(data => { // Take the data from the first query and add the band name
+            if (!data) throw "Error";
             bandObj.name = data.band_name;
             return knex('users').select('display_name', 'id as user_id') // return a knex promise chain
                 .innerJoin('users_bands', 'users_id', 'id')
