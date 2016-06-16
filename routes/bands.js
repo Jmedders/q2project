@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
                 res.render('bands', { // Render bands page with bands array
                     bands: bands
                 });
-            });
+            }).catch(err => res.render("bands", {bands: bands}));
     });
 
     if (res.locals.user) {
