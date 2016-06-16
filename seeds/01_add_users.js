@@ -10,10 +10,16 @@ exports.seed = function(knex, Promise) {
         knex('users').del(),
 
         // Insert new users
+
         knex('users').insert({
             user_name: 'joshN4264',
             password: bcrypt.hashSync('my_stupid_password', 8),
             display_name: 'Josh Newsom'
+        }),
+        knex('users').insert({
+            user_name: 'test',
+            password: bcrypt.hashSync('test', 8),
+            display_name: 'test'
         }),
         knex('users').insert({
             user_name: 'meddersjeff',

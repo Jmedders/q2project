@@ -1,23 +1,42 @@
 var express = require('express'),
     router = express.Router(),
     knex = require('../db/knex'),
-    getBandData = require('../getBandData.js').getBandData;
+    getBandData = require('../getBandData.js').getBandData,
+    usersBands = require('../usersBands.js');
+
+function Magic(num, fn){
+  var args = [];
+  return data => {
+    args.push(data);
+    if(args.length === num) fn.apply(null, args);
+  }
+}
 
 router.get('/', (req, res) => {
     var bands = [];
 
-    knex('bands')
-        .then(function(data) {
-            for (var i = 0; i < data.length; i++) {
-                bands.push({
-                    name: data[i].band_name,
-                    band_id: data[i].id
-                });
+    var magic = Magic(1, ubands => {
+      knex('bands')
+          .then(function(data) {
+            bands = data;
+            if(ubands && res.locals.user){
+              res.locals.user.bands = ubands;
+              ubands = ubands.map(band => band.band_name);
+              bands = data.filter(band => ubands.indexOf(band.band_name) === -1);
             }
-            res.render('bands', { // Render bands page with bands array
-                bands: bands
-            });
-        });
+              // console.log('bands:', bands);
+              res.render('bands', { // Render bands page with bands array
+                  bands: bands
+              });
+          });
+    });
+
+    if (res.locals.user) {
+        usersBands(res.locals.user.user_id).then(magic);
+    } else {
+        magic();
+        console.log('no user');
+    }
 });
 
 router.get('/:band_id', (req, res, next) => {
@@ -42,12 +61,11 @@ router.get('/:band_id', (req, res, next) => {
 
 router.get('/:band_id', function(req, res, next) {
     getBandData(req.params.band_id).then(function(data) {
-      //console.log(data);
-        res.render('band', {
-            band: data
-        });
-    })
-    .catch(next)
+            res.render('band', {
+                band: data
+            });
+        })
+        .catch(next)
 });
 
 router.post('/:band_id', function(req, res, next) {

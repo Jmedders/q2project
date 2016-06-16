@@ -3,7 +3,7 @@ var knex = require('knex')(require('./knexfile.js').development);
 module.exports = function usersBands(user_id) {
     var bandsArray = [];
     return knex('users')
-        .select('band_name')
+        .select('band_name', 'bands.id as band_id')
         .innerJoin('users_bands', 'users.id', 'users_id')
         .innerJoin('bands', 'bands.id', 'bands_id')
         .where('users.id', user_id)
@@ -13,9 +13,4 @@ module.exports = function usersBands(user_id) {
             }
             return Promise.resolve(bandsArray);
         })
-
 }
-
-// usersBands(1).then(function (data) {
-//   console.log(data);
-// })

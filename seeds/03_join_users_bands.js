@@ -1,6 +1,17 @@
 exports.seed = function(knex, Promise) {
     return Promise.join(
 
+
+        knex('users')
+        .where('display_name', 'test')
+        .then(function(result) {
+            return knex('users_bands')
+                .insert({
+                    users_id: result[0].id,
+                    bands_id: 1
+                })
+        }),
+
         knex('users')
         .where('display_name', 'Josh Newsom')
         .orWhere('display_name', 'Sean Murray')

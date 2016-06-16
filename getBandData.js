@@ -125,7 +125,6 @@ function getBandData(id) {
                 }
             }
             bandObj.setlists = setlists;
-            console.log(bandObj);
             return Promise.resolve(bandObj);
         })
         .catch(function(reason) {
