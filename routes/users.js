@@ -4,15 +4,15 @@ var knex = require('../db/knex');
 var bcrypt = require('bcrypt');
 
 router.post("/signup", (req, res, next) => {
-
-    var password = bcrypt.hashSync(req.body.password, 8);
+    var path = req.body.path,
+        password = bcrypt.hashSync(req.body.password, 8);
     knex('users').where({
             user_name: req.body.username
         })
         .then(function(data) {
             if (data.length > 0) {
                 res.locals.error = "Username is taken";
-                res.redirect('/');
+                res.redirect('/' + path);
             } else {
                 knex('users').insert({
                     user_name: req.body.username.toLowerCase(),
@@ -23,7 +23,7 @@ router.post("/signup", (req, res, next) => {
                 .then(function(data) {
                     req.session.user_id = parseInt(data[0].id);
                     req.session.display_name = data[0].user_name;
-                    res.redirect('/bands');
+                    res.redirect('/' + path);
                 }).catch(function(err) {
                     next(err);
                 })
@@ -35,6 +35,7 @@ router.post("/signup", (req, res, next) => {
 
 
 router.post("/signin", (req, res, next) => {
+    var path = req.body.path;
     knex('users')
         .where({
             user_name: req.body.username.toLowerCase()
@@ -43,25 +44,32 @@ router.post("/signin", (req, res, next) => {
         .then(function(data) {
             if (!data) {
                 res.locals.error = "user does not exist!";
-                res.redirect('/')
+                res.redirect('/' + path)
             } else if (bcrypt.compareSync(req.body.password, data.password)) { // Successful password validation
                 req.session.user_id = data.id;
                 req.session.display_name = data.display_name;
-                res.redirect('/bands')
+                res.redirect("/" + path)
             } else {
-                res.redirect('/')
+                res.redirect('/' + path);
             }
         }).catch(function(err) {
             next(err)
         })
 });
 
+router.get("/signout/:path", (req, res) => {
+  req.session.destroy(err => console.log(err));
+  res.redirect("/" + req.params.path);
+});
+
+router.get("/signout/bands/:path", (req, res) => {
+  req.session.destroy(err => console.log(err));
+  res.redirect("/bands/" + req.params.path);
+});
+
 router.get("/signout", (req, res, next) => {
     // clear session / cookies
-    req.session.destroy(function(err) {
-        console.log(err);
-    })
-
+    req.session.destroy(err => console.log(err));
     res.redirect("/");
 });
 

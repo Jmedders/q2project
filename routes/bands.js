@@ -25,9 +25,9 @@ router.get('/', (req, res) => {
                     bands = data.filter(band => ubands.indexOf(band.band_name) === -1);
                 }
                 res.render('bands', { // Render bands page with bands array
-                    bands: bands
+                    bands: bands, path: "bands"
                 });
-            }).catch(err => res.render("bands", {bands: bands}));
+            }).catch(err => res.render("bands", {bands: bands, path: "bands"}));
     });
     console.log('res.locals:', res.locals);
     if (res.locals.user) {
@@ -69,7 +69,7 @@ router.get('/:band_id', function(req, res, next) {
     getBandData(req.params.band_id).then(function(data) {
       console.log(data.gigs[0].setlist);
             res.render('band', {
-                band: data
+                band: data, path: "bands/" + req.params.band_id
             });
         })
         .catch(next)

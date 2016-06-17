@@ -80,6 +80,7 @@ function getBandData(id) {
                     }
                 }
             }
+            console.log(setlist.songs);
             bandObj.setlists = setlists;
 
 
