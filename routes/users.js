@@ -18,8 +18,12 @@ router.post("/signup", (req, res, next) => {
                     user_name: req.body.username.toLowerCase(),
                     password: password,
                     display_name: req.body.username.toLowerCase()
-                }).returning('id').then(function(id) {
-                    res.redirect('/');
+                })
+                .returning(['id', 'user_name'])
+                .then(function(data) {
+                    req.session.user_id = parseInt(data[0].id);
+                    req.session.display_name = data[0].user_name;
+                    res.redirect('/bands');
                 }).catch(function(err) {
                     next(err);
                 })
@@ -28,6 +32,7 @@ router.post("/signup", (req, res, next) => {
             next(err);
         })
 });
+
 
 router.post("/signin", (req, res, next) => {
     knex('users')

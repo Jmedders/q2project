@@ -26,6 +26,7 @@ router.get('/', (req, res) => {
                     bands = data.filter(band => ubands.indexOf(band.band_name) === -1);
                 }
                 // console.log('bands:', bands);
+                console.log('rendering............');
                 res.render('bands', { // Render bands page with bands array
                     bands: bands
                 });
