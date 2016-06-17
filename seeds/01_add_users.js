@@ -103,6 +103,16 @@ exports.seed = function(knex, Promise) {
             user_name: 'mike_mccready',
             password: bcrypt.hashSync('jimmijimmihendrix', 8),
             display_name: 'Mike McCready'
+        }),
+        knex('users').insert({
+          user_name: 'rob_crow',
+          password: bcrypt.hashSync('pass', 8),
+          display_name: 'Rob Crow'
+        }),
+        knex('users').insert({
+          user_name: 'absiv',
+          password: bcrypt.hashSync('pass', 8),
+          display_name: 'Armistead Burwell Smith IV'
         })
 
 

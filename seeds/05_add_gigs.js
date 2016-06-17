@@ -80,6 +80,17 @@ exports.seed = function(knex, Promise) {
           load_in_time: '5:45 PM',
           start_time: '7:00 PM',
           end_time: '9:00 PM'
+        }),
+
+        knex('gigs').insert({
+          band_id: 5,
+          gig_date: new Date('2016/10/03'),
+          venue: 'The Ogden',
+          load_in_time: '5:30 PM',
+          start_time: '8:00 PM',
+          end_time: '10:00 PM'
         })
+
+
     );
 };

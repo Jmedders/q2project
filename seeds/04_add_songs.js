@@ -88,6 +88,31 @@ exports.seed = function(knex, Promise) {
       time_signature: '4/4',
       feel: 'grunge',
       tempo: 70
+    }),
+
+    knex('songs').insert({
+      song_name: 'Penelope',
+      band_id: 5,
+      song_key: 'C#m',
+      time_signature: '4/4',
+      feel: 'alt rock',
+      tempo: 112
+    }),
+    knex('songs').insert({
+      song_name: 'Good to Sea',
+      band_id: 5,
+      song_key: 'Eb',
+      time_signature: '4/4',
+      feel: 'alt rock',
+      tempo: 98
+    }),
+    knex('songs').insert({
+      song_name: 'Walters',
+      band_id: 5,
+      song_key: 'Bb',
+      time_signature: '4/4',
+      feel: 'alt rock',
+      tempo: 86
     })
 
 

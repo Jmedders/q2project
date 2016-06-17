@@ -40,6 +40,11 @@ exports.seed = function(knex, Promise) {
           setlist_name: 'Ambient',
           description: 'Mostly white-noise',
           band_id: 2
+        }),
+        knex('setlists').insert({
+          setlist_name: 'Monkey Butt',
+          description: 'The Hits',
+          band_id: 5
         })
     );
 };

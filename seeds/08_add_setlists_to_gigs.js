@@ -30,7 +30,10 @@ exports.seed = function(knex, Promise) {
         }).where('gigs.id', 9),
         knex('gigs').update({
             setlist_id: 3
-        }).where('gigs.id', 10)
+        }).where('gigs.id', 10),
+        knex('gigs').update({
+            setlist_id: 9
+        }).where('gigs.id', 11)
 
     );
 };

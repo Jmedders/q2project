@@ -12,7 +12,11 @@ exports.seed = function(knex, Promise) {
         }),
         knex('bands').insert({
             band_name: 'Pearl Jam'
+        }),
+        knex('bands').insert({
+            band_name: 'Pinback'
         })
+
 
     );
 };

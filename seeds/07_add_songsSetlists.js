@@ -136,6 +136,22 @@ exports.seed = function(knex, Promise) {
       songs_id: 10,
       setlists_id: 8,
       order_in_list: 2
+    }),
+
+    knex('songs_setlists').insert({
+      songs_id: 13,
+      setlists_id: 9,
+      order_in_list: 1
+    }),
+    knex('songs_setlists').insert({
+      songs_id: 14,
+      setlists_id: 9,
+      order_in_list: 2
+    }),
+    knex('songs_setlists').insert({
+      songs_id: 15,
+      setlists_id: 9,
+      order_in_list: 3
     })
   );
 };

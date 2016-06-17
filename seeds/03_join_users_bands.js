@@ -102,6 +102,20 @@ exports.seed = function(knex, Promise) {
                     users_id: result[4].id,
                     bands_id: 4
                 }])
+        }),
+
+        knex('users')
+        .where('display_name', 'Armistead Burwell Smith IV')
+        .orWhere('display_name', 'Rob Crow')
+        .then(function(result) {
+            return knex('users_bands')
+                .insert([{
+                    users_id: result[0].id,
+                    bands_id: 5
+                }, {
+                    users_id: result[1].id,
+                    bands_id: 5
+                }])
         })
 
     );
