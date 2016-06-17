@@ -28,9 +28,9 @@ router.get('/', (req, res) => {
                 // console.log('bands:', bands);
                 console.log('rendering............');
                 res.render('bands', { // Render bands page with bands array
-                    bands: bands
+                    bands: bands, path: "bands"
                 });
-            }).catch(err => res.render("bands", {bands: bands}));
+            }).catch(err => res.render("bands", {bands: bands, path: "bands"}));
     });
     console.log('res.locals:', res.locals);
     if (res.locals.user) {
@@ -73,7 +73,7 @@ router.get('/:band_id', function(req, res, next) {
         //console.log("--- Band Data ---");
         //console.log(data);
             res.render('band', {
-                band: data
+                band: data, path: "bands/" + req.params.band_id
             });
         })
         .catch(next)
