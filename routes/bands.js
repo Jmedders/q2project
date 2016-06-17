@@ -56,7 +56,13 @@ router.get('/:band_id', (req, res, next) => {
             .innerJoin('bands', 'bands_id', 'bands.id')
             .then(data => {
                 console.log('data:', data);
-                res.locals.isAdmin = data.is_admin; // and assign it to res.locals
+                console.log(res.locals.user.name);
+                if(userId === 2){ // Make test user always admin.
+                  res.locals.isAdmin = true;
+                }
+                else { // For everyone else check their admin status.
+                  res.locals.isAdmin = data.is_admin; // and assign it to res.locals
+                }
                 next();
             }).catch(next)
     }
@@ -64,6 +70,8 @@ router.get('/:band_id', (req, res, next) => {
 
 router.get('/:band_id', function(req, res, next) {
     getBandData(req.params.band_id).then(function(data) {
+        //console.log("--- Band Data ---");
+        //console.log(data);
             res.render('band', {
                 band: data
             });
