@@ -5,7 +5,13 @@
 <div id="content" class="band-content">
   <div id="gigs" class="panel">
     <div class="panel-side">
-      <div class="heading">Upcoming Gigs</div>
+      <div class="heading">
+        <div>Upcoming Gigs</div>
+        <i class="material-icons add-gig">add</i>
+        <input type="text" class="new-gig">
+        <i class="material-icons submit-gig">check</i>
+        <i class="material-icons cancel-gig">clear</i>
+      </div>
       {{#band.gigs}}
         <label for="gig-{{gig_id}}" class="title">
           <div>{{date}}</div>
@@ -14,9 +20,10 @@
       {{/band.gigs}}
       <div class="heading">Members</div>
       {{#band.members}}
-        <div class="title">
-          <div></div>
-          <div>{{display_name}}</div>
+        <input id="{{display_name}}" type="checkbox">
+        <div class="member">
+          <div><i class="material-icons remove">close</i></div>
+          <label for="{{display_name}}">{{display_name}}</label>
         </div>
       {{/band.members}}
     </div>
