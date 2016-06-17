@@ -7,10 +7,12 @@
     <div class="panel-side">
       <div class="heading">
         <div>Upcoming Gigs</div>
-        <i class="material-icons add-gig">add</i>
-        <input type="text" class="new-gig">
-        <i class="material-icons submit-gig">check</i>
-        <i class="material-icons cancel-gig">clear</i>
+        {{#if @root.isAdmin}}
+          <i class="material-icons add-gig">add</i>
+          <input type="text" class="new-gig">
+          <i class="material-icons submit-gig">check</i>
+          <i class="material-icons cancel-gig">clear</i>
+        {{/if}}
       </div>
       {{#band.gigs}}
         <label for="gig-{{gig_id}}" class="title">
@@ -20,62 +22,53 @@
       {{/band.gigs}}
       <div class="heading">Members</div>
       {{#band.members}}
-        <input id="{{display_name}}" type="checkbox">
-        <div class="member">
-          <div><i class="material-icons remove">close</i></div>
-          <label for="{{display_name}}">{{display_name}}</label>
-        </div>
+        {{#if @root.isAdmin}}
+          <input id="{{display_name}}" type="checkbox">
+          <div class="member">
+            <div><i class="material-icons remove">close</i></div>
+            <label for="{{display_name}}">{{display_name}}</label>
+          </div>
+        {{else}}
+          <div class="member"><label>{{display_name}}</label></div>
+        {{/if}}
       {{/band.members}}
     </div>
-    {{log band.gigs}}
     {{#band.gigs}}
       <input id="gig-{{gig_id}}" type="radio" name="gig">
       <div class="panel-main">
         <div class="gig-title">{{venue}}</div>
-        <div class="gig-date">
-          <div>Date</div>
-          <div>{{date}}</div>
-        </div>
-        <div class="gig-load">
-          <div>Load</div>
-          <div>{{loadInTime}}</div>
-        </div>
-        <div class="gig-start">
-          <div>Start</div>
-          <div>{{startTime}}</div>
-        </div>
-        <div class="gig-end">
-          <div>End</div>
-          <div>{{endTime}}</div>
-        </div>
-
+        <div class="gig-date"><div>Date</div><div>{{date}}</div></div>
+        <div class="gig-load"><div>Load</div><div>{{loadInTime}}</div></div>
+        <div class="gig-start"><div>Start</div><div>{{startTime}}</div></div>
+        <div class="gig-end"><div>End</div><div>{{endTime}}</div></div>
         <div class="gig-setlist">
           <div class="setlist-title">{{setlist_name}}</div>
           <div class='setlist-description'>{{description}}</div>
         </div>
-          <!-- Loop over songs in setlist -->
-        {{#songs}}
-          <!-- <input id="gig-{{gig_id}}-song-{{song_id}}" type="checkbox" name="setlist-0"> -->
-          <!-- <label class="gig-song" for="gig-{{gig_id}}-song-{{song_id}}">{{song_title}}</label> -->
-          <div class="song-info">
-            <div class="song-key">
-              <div>Key</div>
-              <div>song_key</div>
+        <div class="song-table">
+          <div>Title</div>
+          <div>Key</div>
+          <div>Time Signature</div>
+          <div>Tempo</div>
+          <div>Feel</div>
+        </div>
+        {{#setlist.songs}}
+          <div class="song">
+            <div class="gig-song">{{song_title}}</div>
+            <div class="song-info">
+              <div class="song-key">{{key}}</div>
+              <div class="time-signature">{{time_signature}}</div>
+              <div class="feel">{{feel}}</div>
+              <div class="tempo">{{tempo}}</div>
             </div>
-            <div class="time-signature">
-              <div>Signature</div>
-              <div>time_signature</div>
-            </div>
-            <div class="feel">
-              <div>Feel</div>
-              <div>feel</div>
-            </div>
-            <div class="tempo">
-              <div>Tempo</div>
-              <div>tempo</div>
+            <div class="song-inputs">
+              <input class="song-key" value="{{key}}">
+              <input class="time-signature" value="{{time_signature}}">
+              <input class="feel" value="{{feel}}">
+              <input class="tempo" value="{{tempo}}">
             </div>
           </div>
-        {{/songs}}
+        {{/setlist.songs}}
       </div>
     {{/band.gigs}}
   </div>
