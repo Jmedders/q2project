@@ -6,6 +6,36 @@ input[type="radio"], input[type="checkbox"] {display: none;}
   right: 10px;
 }
 
+.gig-edit {
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  top: 20px;
+  right: 2%;
+  font: 16px "Droid Sans";
+  text-align: center;
+  overflow: hidden;
+}
+.gig-edit div {
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: .2s all;
+  height: 40px;
+  padding: 10px;
+}
+.gig-edit-edit {
+  color: black;
+  height: 40px;
+  width: 100px;
+  background: rgb(200,200,200);
+  opacity: 1;
+}
+.gig-edit.open .gig-edit-edit {height: 0px; padding: 0px; opacity: 0;}
+.gig-edit-save, .gig-edit-cancel {position: absolute; width: 50px; top: 40px;}
+.gig-edit.open .gig-edit-cancel, .gig-edit.open .gig-edit-save {top: 0px;}
+.gig-edit-save {left: 0; background: rgba(200,200,200);}
+.gig-edit-cancel {right: 0;}
+
 .panel {
   overflow: hidden;
   position: absolute;
@@ -41,9 +71,9 @@ input[type="radio"], input[type="checkbox"] {display: none;}
 .heading input {top: 40px; width: 170px; left: 0; font: 16px "Droid Sans"; height: 40px; border: none; box-sizing: border-box; padding: 10px;}
 .submit-gig, .cancel-gig {width: 20px; padding: 10px; top: 40px;}
 .submit-gig {right: 40px;}
-.submit-gig:hover {background: rgba(39, 215, 46, 0.7);}
+.submit-gig:hover, .gig-edit-save:hover {background: rgba(39, 215, 46, 0.7);}
 .cancel-gig {right: 0px;}
-.cancel-gig:hover {background: rgba(186, 34, 34, 0.7);}
+.cancel-gig:hover, .gig-edit-cancel:hover {background: rgba(186, 34, 34, 0.7);}
 
 
 .title div, .member div, .member label {

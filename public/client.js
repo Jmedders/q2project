@@ -33,13 +33,18 @@ click(".panel-side", e => {
 });
 
 click(".panel", e => {
+  if(e.target.classList.contains("gig-edit-cancel")) gigEdit(e.target);
+  if(e.target.classList.contains("gig-edit-edit")) gigEdit(e.target);
   if(e.target.classList.contains("gig-song") && el("#isAdmin")) openSong(e.target);
 });
+
+function gigEdit(e){
+  el(".gig-edit")[0].classList.toggle("open");
+}
 
 function openSong(e){
   var songinfo = el(".song-info", e.parentNode)[0],
     songinputs = el(".song-inputs", e.parentNode)[0];
-
   if(e.parentNode.classList.contains("open")){
     [".song-key", ".time-signature", ".feel", ".tempo"].forEach(c => {
       el(c, songinfo)[0].textContent = el(c, songinputs)[0].value;
@@ -58,7 +63,6 @@ function removeMember(e){
 }
 
 function addGig(e){
-  console.log(e.parentNode);
   e.parentNode.classList.toggle("open");
 }
 
