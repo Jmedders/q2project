@@ -39,12 +39,13 @@
       <div class="panel-main">
 
         <div class="gig-title">{{venue}}</div>
+        {{#if @root.isAdmin}}
         <div class="gig-edit">
           <div class="gig-edit-edit">Edit</div>
           <div class="gig-edit-save"><i class="material-icons">check</i></div>
           <div class="gig-edit-cancel"><i class="material-icons">clear</i></div>
         </div>
-
+        {{/if}}
         <div class="gig-info">
           <div class="gig-date"><div>Date</div><div>{{date}}</div></div>
           <div class="gig-load"><div>Load</div><div>{{loadInTime}}</div></div>
