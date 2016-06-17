@@ -18,7 +18,7 @@
     </script>
     <form method="post" class="abs-right auth ts w200">
       {{#if user}}
-        <a href="/users/signout" class="right link signout">Sign Out</a>
+        <a href="/users/signout/{{path}}" class="right link signout">Sign Out</a>
         {{#if isAdmin}}
           <div class="right link f13 bg200">{{user.name}}</div>
         {{else}}
@@ -30,6 +30,7 @@
         <i class="abs-right material-icons close">close</i>
         <input type="text" name="username" placeholder="Enter Username" class="w200 auth-input" required>
         <input type="password" name="password" placeholder="Enter Password" class="w200 auth-input" required>
+        <input type="text" name="path" style="display: none;" value="{{path}}">
         <div class="w200">
           <a href="/auth/facebook/callback" class="link facebook">Facebook</a>
           <div class="link google">Google</div>
