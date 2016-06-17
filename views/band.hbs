@@ -12,7 +12,15 @@
           <div>{{venue}}</div>
         </label>
       {{/band.gigs}}
+      <div class="heading">Members</div>
+      {{#band.members}}
+        <div class="title">
+          <div></div>
+          <div>{{display_name}}</div>
+        </div>
+      {{/band.members}}
     </div>
+    {{log band.gigs}}
     {{#band.gigs}}
       <input id="gig-{{gig_id}}" type="radio" name="gig">
       <div class="panel-main">
@@ -34,30 +42,34 @@
           <div>{{endTime}}</div>
         </div>
 
-        <div class="gig-setlist">setlist_title</div>
-
-        <!-- Loop over songs in setlist -->
-        <input id="gig-{{gig_id}}-song-song_id" type="checkbox" name="setlist-0">
-        <label class="gig-song" for="gig-{{gig_id}}-song-song_id">song_title</label>
-        <div class="song-info">
-          <div class="song-key">
-            <div>Key</div>
-            <div>song_key</div>
-          </div>
-          <div class="time-signature">
-            <div>Signature</div>
-            <div>time_signature</div>
-          </div>
-          <div class="feel">
-            <div>Feel</div>
-            <div>feel</div>
-          </div>
-          <div class="tempo">
-            <div>Tempo</div>
-            <div>tempo</div>
-          </div>
+        <div class="gig-setlist">
+          <div class="setlist-title">{{setlist_name}}</div>
+          <div class='setlist-description'>{{description}}</div>
         </div>
-
+          <!-- Loop over songs in setlist -->
+        {{#songs}}
+          <!-- <input id="gig-{{gig_id}}-song-{{song_id}}" type="checkbox" name="setlist-0"> -->
+          <!-- <label class="gig-song" for="gig-{{gig_id}}-song-{{song_id}}">{{song_title}}</label> -->
+          <div class="song-info">
+            <div class="song-key">
+              <div>Key</div>
+              <div>song_key</div>
+            </div>
+            <div class="time-signature">
+              <div>Signature</div>
+              <div>time_signature</div>
+            </div>
+            <div class="feel">
+              <div>Feel</div>
+              <div>feel</div>
+            </div>
+            <div class="tempo">
+              <div>Tempo</div>
+              <div>tempo</div>
+            </div>
+          </div>
+        {{/songs}}
       </div>
     {{/band.gigs}}
+  </div>
 </div>

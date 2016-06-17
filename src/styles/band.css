@@ -28,6 +28,7 @@ input[type="radio"], input[type="checkbox"] {display: none;}
   height: 40px;
 }
 .title div {
+  vertical-align: text-top;
   box-sizing: border-box;
   padding: 10px 5px;
   font: 16px "Droid Sans";
@@ -35,11 +36,13 @@ input[type="radio"], input[type="checkbox"] {display: none;}
 }
 .title div:first-child {
   text-align: center;
+  height: 40px;
   width: 50px;
   color: black;
   background: rgba(240,240,240,.8);
 }
 .title div:last-child {
+  padding: 10px 5px 10px 10px;
   width: 199px;
   background: rgba(20,20,20,.8);
 }
@@ -79,28 +82,70 @@ input[type="radio"]:checked + .panel-main {width: calc(100% - 250px); opacity: 1
 .gig-date, .gig-load, .gig-start {margin-left: 2%;}
 .gig-end {margin: 0 2%;}
 .gig-setlist {
+  margin-top: 20px;
+  background: rgba(20,20,20,.7);
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.gig-setlist div {
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.setlist-title {
+  text-align: center;
   padding: 10px;
   font: 20px "Droid Sans";
-  margin: 20px 2% 0px 2%;
-  background: rgba(20,20,20,.7);
-  border: 1px solid black;
+  width: 25%;
 }
+
+.setlist-description {
+  font: 16px "Droid Sans";
+  width: 75%;
+}
+
+
 .gig-song {
   transition: .2s all;
   display: block;
   color: black;
-  margin: 0 2%;
   font: 16px "Droid Sans";
   padding: 10px;
   background: rgba(240,240,240,.4);
 }
 
 .song-info {
-  margin: 0 2%;
+  overflow: hidden;
   transition: .2s all;
   background: rgba(240,240,240,.4);
   height: 0px;
 }
 
-input[type="checkbox"]:checked + .gig-song {margin: 10px 2% 0px 2%;}
-input[type="checkbox"]:checked + .gig-song + .song-info {height: 39px; margin: 0px 2% 10px 2%;}
+input[type="checkbox"]:checked + .gig-song + .song-info {height: 48px;}
+
+.song-key, .time-signature, .feel, .tempo {
+  box-sizing: border-box;
+  width: calc(90% / 4);
+  text-align: center;
+  border: 1px solid rgb(20,20,20);
+  display: inline-block;
+  padding: 5px 10px;
+  margin-left: 2%;
+  background: rgba(20,20,20,.5);
+}
+.tempo {margin-right: 2%;}
+
+.song-key div:first-child,
+.time-signature div:first-child,
+.feel div:first-child,
+.tempo div:first-child {
+  font: 12px "Droid Sans";
+}
+
+.song-key div:last-child,
+.time-signature div:last-child,
+.feel div:last-child,
+.tempo div:last-child {
+  font: 14px "Droid Sans";
+}

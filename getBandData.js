@@ -77,7 +77,7 @@ function getBandData(id) {
             }
             bandObj.gigs = gigs;
             return knex('songs') // return a knex promise chain
-                .select('song_name as title', 'id as song_id')
+                .select('song_name as title', 'id as song_id', "song_key as key", "time_signature", "feel", "tempo")
                 .where('band_id', id)
         })
         .then(data => { // Take the data from the last query and add songs objects
@@ -87,7 +87,7 @@ function getBandData(id) {
             }
             bandObj.songs = songs;
             return knex('setlists') // return a knex promise chain
-                .select('setlist_name as setlist_title', 'order_in_list', 'song_name', 'setlists.id as set_id')
+                .select('setlist_name as setlist_title', 'order_in_list', 'songs.song_key', 'songs.feel', 'songs.tempo', 'songs.time_signature', 'song_name', 'setlists.id as set_id')
                 .innerJoin('songs_setlists', 'setlists_id', 'setlists.id')
                 .innerJoin('songs', 'songs_id', 'songs.id')
                 .where('setlists.band_id', id)
@@ -111,6 +111,10 @@ function getBandData(id) {
             var songs = [];
             for (var i = 0; i < data.length; i++) {
                 var song = {
+                    key: data[i].song_key,
+                    tempo: data[i].tempo,
+                    feel: data[i].feel,
+                    time_signature: data[i].time_signature,
                     song_title: data[i].song_name,
                     set_id: data[i].set_id,
                     order_in_list: data[i].order_in_list
