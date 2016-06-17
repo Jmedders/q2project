@@ -13,7 +13,6 @@ function Magic(num, fn) {
 }
 
 router.get('/', (req, res) => {
-    console.log('================HIT BANDS / ROOT================');
     var bands = [];
 
     var magic = Magic(1, ubands => {
@@ -25,8 +24,6 @@ router.get('/', (req, res) => {
                     ubands = ubands.map(band => band.band_name);
                     bands = data.filter(band => ubands.indexOf(band.band_name) === -1);
                 }
-                // console.log('bands:', bands);
-                console.log('rendering............');
                 res.render('bands', { // Render bands page with bands array
                     bands: bands
                 });
@@ -70,8 +67,7 @@ router.get('/:band_id', (req, res, next) => {
 
 router.get('/:band_id', function(req, res, next) {
     getBandData(req.params.band_id).then(function(data) {
-        //console.log("--- Band Data ---");
-        //console.log(data);
+      console.log(data.gigs[0].setlist);
             res.render('band', {
                 band: data
             });

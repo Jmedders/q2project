@@ -21,10 +21,6 @@ function getBandData(id) {
         return `${hour}:${minute}${ampm}`;
     }
 
-
-
-
-
     var bandObj = {}; //create an empty object
     bandObj.band_id = id; //set the object's band_id to the id passed into the function
 
@@ -42,50 +38,8 @@ function getBandData(id) {
                 members.push(member);
             }
             bandObj.members = members;
-            return knex('gigs') // return a knex promise chain
-                .select(
-                    'gigs.id as gig_id',
-                    'gig_date as date',
-                    'venue',
-                    'load_in_time as loadInTime',
-                    'start_time as startTime',
-                    'end_time as endTime',
-                    'setlist_id',
-                    'setlists.*')
-                .leftJoin('setlists', 'setlists.id', 'gigs.setlist_id')
-                .where('gigs.band_id', id)
-        })
-        .then(data => { // Take the data from the last query and add gig objects
-            var gigs = [];
-            for (var gig of data) {
 
-                ["loadInTime", "startTime", "endTime"].forEach(key => {
-                    gig[key] = formatTime(gig[key]);
-                });
 
-                gig.date = formatDate(gig.date);
-                if (gig.setlist_id) {
-                    var setlist = {
-                        setlist_name: gig.setlist_name,
-                        description: gig.description
-                    };
-                    gig.setlist = setlist;
-                } else {
-                    gig.setlist = null;
-                }
-                gigs.push(gig);
-            }
-            bandObj.gigs = gigs;
-            return knex('songs') // return a knex promise chain
-                .select('song_name as title', 'id as song_id', "song_key as key", "time_signature", "feel", "tempo")
-                .where('band_id', id)
-        })
-        .then(data => { // Take the data from the last query and add songs objects
-            var songs = [];
-            for (var song of data) {
-                songs.push(song);
-            }
-            bandObj.songs = songs;
             return knex('setlists') // return a knex promise chain
                 .select('setlist_name as setlist_title', 'order_in_list', 'songs.song_key', 'songs.feel', 'songs.tempo', 'songs.time_signature', 'song_name', 'setlists.id as set_id')
                 .innerJoin('songs_setlists', 'setlists_id', 'setlists.id')
@@ -93,9 +47,7 @@ function getBandData(id) {
                 .where('setlists.band_id', id)
                 .orderBy('setlists_id')
                 .orderBy('order_in_list')
-
-        })
-        .then(data => { // Take the data from the last query and add setlist objects
+        }).then(data => { // Take the data from the last query and add setlist objects
             var setlists = [];
             var usedIds = [];
             for (var i = 0; i < data.length; i++) {
@@ -129,11 +81,50 @@ function getBandData(id) {
                 }
             }
             bandObj.setlists = setlists;
+
+
+            return knex('gigs') // return a knex promise chain
+                .select(
+                    'gigs.id as gig_id',
+                    'gig_date as date',
+                    'venue',
+                    'load_in_time as loadInTime',
+                    'start_time as startTime',
+                    'end_time as endTime',
+                    'setlist_id',
+                    'setlists.*')
+                .leftJoin('setlists', 'setlists.id', 'gigs.setlist_id')
+                .where('gigs.band_id', id)
+        })
+        .then(data => { // Take the data from the last query and add gig objects
+            var gigs = [];
+            for (var gig of data) {
+                for (var i = 0; i < bandObj.setlists.length; i++) {
+                    if (gig.setlist_id === bandObj.setlists[i].set_id) {
+                        gig.setlist = bandObj.setlists[i];
+                    }
+                }
+
+                gig.date = formatDate(gig.date);
+                gigs.push(gig);
+            }
+            bandObj.gigs = gigs;
+            return knex('songs') // return a knex promise chain
+                .select('song_name as title', 'id as song_id', "song_key as key", "time_signature", "feel", "tempo")
+                .where('band_id', id)
+        })
+        .then(data => { // Take the data from the last query and add songs objects
+            var songs = [];
+            for (var song of data) {
+                songs.push(song);
+            }
+            bandObj.songs = songs;
             return Promise.resolve(bandObj);
         })
-        .catch(function(reason) {
-            return Promise.reject(reason);
-        });
+
+    .catch(function(reason) {
+        return Promise.reject(reason);
+    });
 }
 
 module.exports = {

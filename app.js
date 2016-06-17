@@ -91,7 +91,7 @@ app.use((req, res, next) => {
             user_id: req.session.user_id,
             name: req.session.display_name
         };
-        console.log(res.locals.user);
+        // console.log(res.locals.user);
     } else { // If logged out
         res.locals.user = null;
     }
