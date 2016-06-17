@@ -105,7 +105,7 @@ function getBandData(id) {
                         gig.setlist = bandObj.setlists[i];
                     }
                 }
-
+                ["startTime", "endTime", "loadInTime"].forEach(key => gig[key] = formatTime(gig[key]));
                 gig.date = formatDate(gig.date);
                 gigs.push(gig);
             }
