@@ -56,7 +56,7 @@ router.get('/:band_id', (req, res, next) => {
                 console.log('data:', data);
                 res.locals.isAdmin = data.is_admin; // and assign it to res.locals
                 next();
-            })
+            }).catch(next)
     }
 });
 
