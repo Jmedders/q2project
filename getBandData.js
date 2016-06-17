@@ -4,7 +4,7 @@ function getBandData(id) {
 
     function formatDate(dateStr) {
         var date = new Date(dateStr),
-            month = date.getMonth(),
+            month = date.getMonth() + 1,
             day = date.getDate();
         return month + "/" + day;
     }
