@@ -144,50 +144,58 @@ input[type="radio"]:checked + .panel-main {width: calc(100% - 250px); opacity: 1
   width: 75%;
 }
 
-
-.gig-song {
+.song {
   transition: .2s all;
-  display: block;
+  position: relative;
+  background: rgba(240,240,240,.6);
+  border-bottom: 1px solid rgb(100,100,100);
+  height: 40px;
+}
+.song.open {margin: 10px;}
+
+.gig-song, .song-info, .song-inputs {
+  position: absolute;
+  top: 0;
+}
+.gig-song {
+  left: 0;
+  box-sizing: border-box;
   color: black;
   font: 16px "Droid Sans";
   padding: 10px;
-  background: rgba(240,240,240,.4);
+  width: calc(200% / 3);
+  height: 40px;
 }
 
-.song-info {
+.song-info, .song-inputs {
+  right: 0;
+  box-sizing: border-box;
+  width: calc(100% / 3);
+  padding: 2px;
+  vertical-align: top;
   overflow: hidden;
-  transition: .2s all;
-  background: rgba(240,240,240,.4);
-  height: 0px;
 }
+.song-info {height: 40px;}
+.song-info.hide {height: 0px;}
+.song-inputs {height: 0px;}
+.song-inputs.show {height: 40px;}
+.song-inputs input {color: white;}
 
 input[type="checkbox"]:checked + .gig-song + .song-info {height: 48px;}
 
 .song-key, .time-signature, .feel, .tempo {
+  vertical-align: text-top;
   box-sizing: border-box;
   width: calc(90% / 4);
   text-align: center;
-  border: 1px solid rgb(20,20,20);
   display: inline-block;
   padding: 5px 10px;
   margin-left: 2%;
-  background: rgba(20,20,20,.5);
-}
-.tempo {margin-right: 2%;}
-
-.song-key div:first-child,
-.time-signature div:first-child,
-.feel div:first-child,
-.tempo div:first-child {
+  height: 36px;
+  background: rgb(20,20,20);
   font: 12px "Droid Sans";
 }
-
-.song-key div:last-child,
-.time-signature div:last-child,
-.feel div:last-child,
-.tempo div:last-child {
-  font: 14px "Droid Sans";
-}
+.tempo {margin-right: 2%;}
 
 .bands-content {overflow-y: scroll; padding: 40px 0px;}
 .band-name, .bands-heading {

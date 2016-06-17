@@ -32,6 +32,17 @@ click(".panel-side", e => {
   if(e.target.classList.contains("cancel-gig")) cancelGig(e.target);
 });
 
+click(".panel", e => {
+  if(e.target.classList.contains("gig-song")) openSong(e.target);
+});
+
+function openSong(e){
+  console.log("open");
+  el(".song-info", e.parentNode)[0].classList.toggle("hide");
+  el(".song-inputs", e.parentNode)[0].classList.toggle("show");
+  e.parentNode.classList.toggle("open");
+}
+
 function removeMember(e){
   var parent = e.target.parentNode,
     grandparent = parent.parentNode,
