@@ -77,7 +77,7 @@ var getBandData = require("./temp.js").getBandData; // This is just for getting 
 
 
 app.use((req, res, next) => {
-  res.locals.bands = [getBandData(0)]; // Get a list of some bands and assign it to locals object, which is available everywhere.
+  // res.locals.bands = [getBandData(0)]; // Get a list of some bands and assign it to locals object, which is available everywhere.
 
     if (req.session.passport) { // If using Facebook OAuth
       res.locals.user = {
@@ -85,11 +85,13 @@ app.use((req, res, next) => {
         name: req.session.passport.user.displayName
       };
     }
-    else if (req.session.user_id) { // If using regular login
+    else if (req.session.user_id) {
+       // If using regular login
         res.locals.user = {
             user_id: req.session.user_id,
             name: req.session.display_name
         };
+        console.log(res.locals.user);
     } else { // If logged out
         res.locals.user = null;
     }

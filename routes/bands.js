@@ -13,6 +13,7 @@ function Magic(num, fn) {
 }
 
 router.get('/', (req, res) => {
+    console.log('================HIT BANDS / ROOT================');
     var bands = [];
 
     var magic = Magic(1, ubands => {
@@ -39,29 +40,28 @@ router.get('/', (req, res) => {
     }
 });
 
-// router.get('/:band_id', (req, res, next) => {
-//     var userId = req.session.passport ? req.session.passport.user.id : req.session.user_id || null;
-//
-//     if (!userId) { // if the user is not logged in
-//         res.locals.isAdmin = false; // then they are NOT an admin anywhere
-//         next();
-//     } else { // otherwise, if the user is logged in
-//         knex('users') // check their admin status for this band
-//             .select('is_admin')
-//             .first()
-//             .where('users.id', 1)
-//             .innerJoin('users_bands', 'users_id', 'users.id')
-//             .innerJoin('bands', 'bands_id', 'bands.id')
-//             .then(data => {
-//                 console.log('data:', data);
-//                 res.locals.isAdmin = data.is_admin; // and assign it to res.locals
-//                 next();
-//             }).catch(next)
-//     }
-// });
+router.get('/:band_id', (req, res, next) => {
+    var userId = req.session.passport ? req.session.passport.user.id : req.session.user_id || null;
+
+    if (!userId) { // if the user is not logged in
+        res.locals.isAdmin = false; // then they are NOT an admin anywhere
+        next();
+    } else { // otherwise, if the user is logged in
+        knex('users') // check their admin status for this band
+            .select('is_admin')
+            .first()
+            .where('users.id', 1)
+            .innerJoin('users_bands', 'users_id', 'users.id')
+            .innerJoin('bands', 'bands_id', 'bands.id')
+            .then(data => {
+                console.log('data:', data);
+                res.locals.isAdmin = data.is_admin; // and assign it to res.locals
+                next();
+            }).catch(next)
+    }
+});
 
 router.get('/:band_id', function(req, res, next) {
-    console.log('the band id is:', req.params.band_id, 'woo!');
     getBandData(req.params.band_id).then(function(data) {
             res.render('band', {
                 band: data
