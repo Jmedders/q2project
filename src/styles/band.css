@@ -67,6 +67,8 @@ input[type="radio"], input[type="checkbox"] {display: none;}
   background: rgba(20,20,20,.8);
 }
 
+.member {position: relative;}
+
 .member div {
   overflow: hidden;
   padding: 0px;
@@ -76,15 +78,30 @@ input[type="radio"], input[type="checkbox"] {display: none;}
   color: white;
   background: rgb(100, 10, 10);
 }
+.call {
+  transition: .2s all;
+  box-sizing: border-box;
+  background: rgb(200,200,200);
+  overflow: hidden;
+  padding: 10px 5px;
+  text-align: center;
+  height: 40px;
+  width: 50px;
+  color: black;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
 .member label {
   padding: 10px 5px 10px 10px;
-  width: 249px;
+  width: 199px;
   color: white;
   background: rgba(20,20,20,.8);
 }
 input[type="checkbox"]:checked + .member div {width: 50px; padding: 10px 5px;}
-input[type="checkbox"]:checked + .member label {width: 199px;}
+input[type="checkbox"]:checked + .member .call {width: 0px; padding: 0px;}
+/*input[type="checkbox"]:checked + .member label {width: 199px;}*/
 
 .title div:last-child:hover {background: rgba(20,20,20,.9);}
 

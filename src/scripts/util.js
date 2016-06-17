@@ -46,3 +46,16 @@ function t(tag, config){
     return parent;
   };
 }
+
+function reqListener () {
+  console.log(this.responseText);
+}
+
+function http(verb, url, cb){
+  var req = new XMLHttpRequest(),
+    data = cb || null;
+  if(verb === "post") req.setRequestHeader("Content-type", "application/json");
+  else if(cb) req.addEventListener("load", cb);
+  req.open(verb, url);
+  req.send(data);
+}

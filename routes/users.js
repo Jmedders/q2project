@@ -73,7 +73,9 @@ router.get("/signout", (req, res, next) => {
     res.redirect("/");
 });
 
-
+router.get("/call", (req, res) => {
+  require("../twilio.js").sendSMS("+17207717686");
+});
 
 
 module.exports = router;
