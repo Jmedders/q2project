@@ -56,7 +56,7 @@ function openSong(e){
 }
 
 function removeMember(e){
-  var parent = e.target.parentNode,
+  var parent = e.parentNode,
     grandparent = parent.parentNode,
     ancestor = grandparent.parentNode;
   ancestor.removeChild(grandparent);
