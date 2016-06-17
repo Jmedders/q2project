@@ -30,18 +30,27 @@
             <i class="material-icons call">phone</i>
           </div>
         {{else}}
-          <div class="member"><label>{{display_name}}</label></div>
+          <div class="member"><label class="w100p">{{display_name}}</label></div>
         {{/if}}
       {{/band.members}}
     </div>
     {{#band.gigs}}
       <input id="gig-{{gig_id}}" type="radio" name="gig">
       <div class="panel-main">
+
         <div class="gig-title">{{venue}}</div>
-        <div class="gig-date"><div>Date</div><div>{{date}}</div></div>
-        <div class="gig-load"><div>Load</div><div>{{loadInTime}}</div></div>
-        <div class="gig-start"><div>Start</div><div>{{startTime}}</div></div>
-        <div class="gig-end"><div>End</div><div>{{endTime}}</div></div>
+        <div class="gig-edit">
+          <div class="gig-edit-edit">Edit</div>
+          <div class="gig-edit-save"><i class="material-icons">check</i></div>
+          <div class="gig-edit-cancel"><i class="material-icons">clear</i></div>
+        </div>
+
+        <div class="gig-info">
+          <div class="gig-date"><div>Date</div><div>{{date}}</div></div>
+          <div class="gig-load"><div>Load</div><div>{{loadInTime}}</div></div>
+          <div class="gig-start"><div>Start</div><div>{{startTime}}</div></div>
+          <div class="gig-end"><div>End</div><div>{{endTime}}</div></div>
+        </div>
         <div class="gig-setlist">
           <div class="setlist-title">{{setlist_name}}</div>
           <div class='setlist-description'>{{description}}</div>
