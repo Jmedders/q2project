@@ -16,6 +16,9 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
     </script>
+    {{#if isAdmin}}
+      <div id="isAdmin" style="display: none;"></div>
+    {{/if}}
     <form method="post" class="abs-right auth ts w200">
       {{#if user}}
         <a href="/users/signout/{{path}}" class="right link signout">Sign Out</a>

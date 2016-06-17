@@ -6,11 +6,18 @@ click(".panel-side", e => {
 });
 
 click(".panel", e => {
-  if(e.target.classList.contains("gig-song")) openSong(e.target);
+  if(e.target.classList.contains("gig-song") && el("#isAdmin")) openSong(e.target);
 });
 
 function openSong(e){
-  console.log("open");
+  var songinfo = el(".song-info", e.parentNode)[0],
+    songinputs = el(".song-inputs", e.parentNode)[0];
+
+  if(e.parentNode.classList.contains("open")){
+    [".song-key", ".time-signature", ".feel", ".tempo"].forEach(c => {
+      el(c, songinfo)[0].textContent = el(c, songinputs)[0].value;
+    });
+  }
   el(".song-info", e.parentNode)[0].classList.toggle("hide");
   el(".song-inputs", e.parentNode)[0].classList.toggle("show");
   e.parentNode.classList.toggle("open");
@@ -48,4 +55,11 @@ function newGig(title){
 function cancelGig(e){
   el("input", e.parentNode)[0].value = "";
   e.parentNode.classList.remove("open");
+}
+
+click(".call", call);
+
+function call(){
+  http("get", "/users/call");
+  console.log("call");
 }
